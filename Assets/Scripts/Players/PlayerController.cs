@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask groundLayerMask;
 
     [Header("Rotation")]
-    [SerializeField] bool lookingRight;
-    int rotatingPhase;
+    public bool lookingRight;
+    [HideInInspector] public int rotatingPhase;
     int necesaryRotatingPhases;
 
     Rigidbody rb;
@@ -38,27 +38,29 @@ public class PlayerController : MonoBehaviour
         // controller
         if (player1)
         {
+            int playerIndex = GetComponent<PlayerInput>().playerIndex;
             int controllerType1 = SettingsManager.instance.controllerType1;
-            if (controllerType1 == 0) PlayerInput.all[0].SwitchCurrentControlScheme("KeyboardWASD", Keyboard.current);
-            else if (controllerType1 == 1) PlayerInput.all[0].SwitchCurrentControlScheme("KeyboardARROWS", Keyboard.current);
-            else if (Gamepad.all.Count > 0) PlayerInput.all[0].SwitchCurrentControlScheme("Controller", Gamepad.all[0]);
-            else PlayerInput.all[0].SwitchCurrentControlScheme("KeyboardWASD", Keyboard.current);
+            if (controllerType1 == 0) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardWASD", Keyboard.current);
+            else if (controllerType1 == 1) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardARROWS", Keyboard.current);
+            else if (Gamepad.all.Count > 0) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("Controller", Gamepad.all[0]);
+            else PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardWASD", Keyboard.current);
         }
         else
         {
+            int playerIndex = GetComponent<PlayerInput>().playerIndex;
             int controllerType2 = SettingsManager.instance.controllerType2;
-            if (controllerType2 == 0) PlayerInput.all[1].SwitchCurrentControlScheme("KeyboardWASD", Keyboard.current);
-            else if (controllerType2 == 1) PlayerInput.all[1].SwitchCurrentControlScheme("KeyboardARROWS", Keyboard.current);
+            if (controllerType2 == 0) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardWASD", Keyboard.current);
+            else if (controllerType2 == 1) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardARROWS", Keyboard.current);
             else
             {
                 int controllerType1 = SettingsManager.instance.controllerType1;
                 if (controllerType1 == 2)
                 {
-                    if (Gamepad.all.Count > 1) PlayerInput.all[1].SwitchCurrentControlScheme("Controller", Gamepad.all[1]);
-                    else if (Gamepad.all.Count > 0) PlayerInput.all[1].SwitchCurrentControlScheme("KeyboardWASD", Keyboard.current);
-                    else PlayerInput.all[1].SwitchCurrentControlScheme("KeyboardARROWS", Keyboard.current);
+                    if (Gamepad.all.Count > 1) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("Controller", Gamepad.all[1]);
+                    else if (Gamepad.all.Count > 0) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardWASD", Keyboard.current);
+                    else PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardARROWS", Keyboard.current);
                 }
-                else if (Gamepad.all.Count > 0) PlayerInput.all[1].SwitchCurrentControlScheme("Controller", Gamepad.all[0]);
+                else if (Gamepad.all.Count > 0) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("Controller", Gamepad.all[0]);
             }
         }
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 167631027}
   - component: {fileID: 167631026}
   - component: {fileID: 167631028}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: EchoDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -4981,8 +4981,9 @@ GameObject:
   - component: {fileID: 6396432859165345357}
   - component: {fileID: 6396432859165345356}
   - component: {fileID: 6396432859165345353}
+  - component: {fileID: 761201331}
   m_Layer: 6
-  m_Name: PlayerPlaceholder
+  m_Name: PlayerDetectorPlaceholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5166,8 +5167,37 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b409653b-3f0d-493a-ac42-bbbfe328e492
     m_ActionName: Player/Jump[/Keyboard/w,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 761201331}
+        m_TargetAssemblyTypeName: DetectorEchoAttack, Assembly-CSharp
+        m_MethodName: OnEcho
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7a9b0fec-2bbe-4deb-9779-c0e523019f98
+    m_ActionName: Player/Echo[/Keyboard/s,/Keyboard/downArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &761201331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6396432859165345364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 862e5f4cc3a75b84b9eeda43c8de1223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EchoParticles: {fileID: 167631027}
