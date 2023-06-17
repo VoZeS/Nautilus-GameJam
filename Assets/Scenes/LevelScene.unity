@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 323933465}
   - component: {fileID: 323933464}
   - component: {fileID: 323933463}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +904,7 @@ GameObject:
   - component: {fileID: 778602940}
   - component: {fileID: 778602939}
   - component: {fileID: 778602938}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1098,7 +1098,7 @@ GameObject:
   - component: {fileID: 1069316117}
   - component: {fileID: 1069316116}
   - component: {fileID: 1069316115}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1410,7 +1410,7 @@ GameObject:
   - component: {fileID: 1348428706}
   - component: {fileID: 1348428705}
   - component: {fileID: 1348428704}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1944,7 +1944,7 @@ GameObject:
   - component: {fileID: 1870762650}
   - component: {fileID: 1870762649}
   - component: {fileID: 1870762648}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: BalconyFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
