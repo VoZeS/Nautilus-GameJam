@@ -1874,6 +1874,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6396432859165345356, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
+      propertyPath: jumpForce
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396432859165345356, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
       propertyPath: groundBoxSize.x
       value: 0.55
       objectReference: {fileID: 0}

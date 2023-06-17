@@ -12,10 +12,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed = 2.0f;
     [SerializeField] float jumpForce = 1.0f;
     float movementInput = 0.0f;
-    bool jumped = false;
+    bool jumpInput = false;
+    bool jumping = false;
 
     [Header("Ground")]
-    [NonEditable] bool onGround;
+    [NonEditable][SerializeField] bool onGround;
     [SerializeField] Vector3 groundBoxSize;
     [SerializeField] float groundBoxDistance;
     [SerializeField] LayerMask groundLayerMask;
@@ -69,6 +70,7 @@ public class PlayerController : MonoBehaviour
 
         if (onGround)
         {
+            // rotation
             if (lookingRight && movementInput < 0 && rotatingPhase >= 0)
             {
                 if (rotatingPhase == 0) necesaryRotatingPhases = 181;
@@ -83,11 +85,16 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine("RotateToRight");
                 StopCoroutine("RotateToLeft");
             }
+
+            // movement
             rb.velocity = new Vector3(movementInput * speed, 0, 0);
 
-            if (jumped)
+            // jump
+            if (jumpInput && !jumping)
             {
                 rb.AddForce(new Vector3(0, jumpForce, 0));
+                jumping = true;
+                Invoke("JumpDone", 0.5f);
             }
         }
     }
@@ -99,7 +106,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        jumped = context.action.triggered;
+        jumpInput = context.action.triggered;
     }
 
     IEnumerator RotateToRight()
@@ -126,6 +133,11 @@ public class PlayerController : MonoBehaviour
         }
         rotatingPhase = 0;
         rb.rotation = Quaternion.Euler(0, 180.0f, 0);
+    }
+
+    void JumpDone()
+    {
+        jumping = false;
     }
 
     void OnDrawGizmos()
