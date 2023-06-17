@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +15,10 @@ public class PlayerController : MonoBehaviour
     float movementInput = 0.0f;
     bool jumpInput = false;
     bool jumping = false;
+    [SerializeField][Range(0.0f, 1.0f)] float airMovementSpeed = 0.2f;
+    [SerializeField] float airMovementIncrement = 1.0f;
+    [NonEditable][SerializeField] float airMovement = 0.0f;
+    float speedAtJump = 0.0f;
 
     [Header("Ground")]
     [NonEditable][SerializeField] bool onGround;
@@ -66,10 +71,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        onGround = Physics.BoxCast(transform.position, groundBoxSize, -transform.up, Quaternion.identity, groundBoxDistance, groundLayerMask);
+        onGround = Physics.BoxCast(transform.position, groundBoxSize / 2.0f, Vector3.down, Quaternion.identity, groundBoxDistance, groundLayerMask);
 
         if (onGround)
         {
+            airMovement = 0.0f;
+
             // rotation
             if (lookingRight && movementInput < 0 && rotatingPhase >= 0)
             {
@@ -94,8 +101,19 @@ public class PlayerController : MonoBehaviour
             {
                 rb.AddForce(new Vector3(0, jumpForce, 0));
                 jumping = true;
+                speedAtJump = rb.velocity.x;
                 Invoke("JumpDone", 0.5f);
             }
+        }
+        else if (airMovement < 1.0f)
+        {
+            rb.velocity = new Vector3(Mathf.Lerp(speedAtJump, movementInput * speed * airMovementSpeed, airMovement), rb.velocity.y, 0);
+            airMovement += Time.deltaTime * airMovementIncrement;
+        }
+        else if ((rb.velocity.x > 0 && movementInput < 0) || (rb.velocity.x < 0 && movementInput > 0))
+        {
+            speedAtJump = rb.velocity.x;
+            airMovement = 0.0f;
         }
     }
 
@@ -142,7 +160,19 @@ public class PlayerController : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(transform.position - transform.up * groundBoxDistance, groundBoxSize);
+        RaycastHit hit;
+        bool isHit = Physics.BoxCast(transform.position, groundBoxSize / 2, -transform.up, out hit, Quaternion.identity, groundBoxDistance, groundLayerMask);
+        if (isHit)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(transform.position, -transform.up * groundBoxDistance);
+            Gizmos.DrawWireCube(transform.position - transform.up * groundBoxDistance, groundBoxSize);
+        }
+        else
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(transform.position, -transform.up * groundBoxDistance);
+            Gizmos.DrawWireCube(transform.position - transform.up * groundBoxDistance, groundBoxSize);
+        }
     }
 }
