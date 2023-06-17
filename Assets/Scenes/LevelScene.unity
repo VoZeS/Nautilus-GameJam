@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 323933465}
   - component: {fileID: 323933464}
   - component: {fileID: 323933463}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +904,7 @@ GameObject:
   - component: {fileID: 778602940}
   - component: {fileID: 778602939}
   - component: {fileID: 778602938}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1098,7 +1098,7 @@ GameObject:
   - component: {fileID: 1069316117}
   - component: {fileID: 1069316116}
   - component: {fileID: 1069316115}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1376,7 +1376,7 @@ GameObject:
   - component: {fileID: 1348428706}
   - component: {fileID: 1348428705}
   - component: {fileID: 1348428704}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1796,6 +1796,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 167631024, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 167631026, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
       propertyPath: m_RenderMode
       value: 0
@@ -1819,6 +1823,10 @@ PrefabInstance:
     - target: {fileID: 167631027, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110696875, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1110696878, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1875,6 +1883,10 @@ PrefabInstance:
     - target: {fileID: 6396432859165345364, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
       propertyPath: m_Name
       value: PlayerPlaceholder
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396432859165345364, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
