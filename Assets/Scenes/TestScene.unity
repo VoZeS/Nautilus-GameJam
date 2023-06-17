@@ -222,6 +222,12 @@ MonoBehaviour:
   player1: 0
   speed: 2
   jumpForce: 1
+  onGround: 0
+  groundBoxSize: {x: 0, y: 0, z: 0}
+  groundBoxDistance: 0
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   lookingRight: 0
 --- !u!54 &612276780
 Rigidbody:
@@ -272,7 +278,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -502,6 +508,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 167631026, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
+    - target: {fileID: 1110696878, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 6396432859165345359, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -546,6 +560,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6396432859165345361, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 6396432859165345364, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
       propertyPath: m_Name
       value: PlayerPlaceholder
