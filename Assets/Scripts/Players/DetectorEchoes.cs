@@ -17,7 +17,7 @@ public class DetectorEchoes : MonoBehaviour
     {
         if (other.CompareTag("Invisible"))
         {
-            Debug.Log("Invisible");
+            other.GetComponent<InvisibleObject>().FadeIn();
         }
     }
 }

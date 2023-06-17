@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 167631027}
   - component: {fileID: 167631026}
   - component: {fileID: 167631028}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EchoDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4984,7 +4984,7 @@ GameObject:
   - component: {fileID: 761201331}
   m_Layer: 6
   m_Name: PlayerDetectorPlaceholder
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5110,6 +5110,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   lookingRight: 0
+  rotatingPhase: 0
 --- !u!114 &6396432859165345353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5183,6 +5184,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7a9b0fec-2bbe-4deb-9779-c0e523019f98
     m_ActionName: Player/Echo[/Keyboard/s,/Keyboard/downArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b2c8bf40-c989-41cf-8be9-67087e1e037d
+    m_ActionName: Player/AimUp[/Keyboard/w,/Keyboard/upArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
