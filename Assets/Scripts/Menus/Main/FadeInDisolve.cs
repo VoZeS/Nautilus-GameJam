@@ -8,24 +8,25 @@ public class FadeInDisolve : MonoBehaviour
     [SerializeField] Material mat;
     [SerializeField] float disolveSpeed;
     float disolveAmount;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        disolveAmount = 1.0f;
+        disolveAmount = 0.0f;
         mat.SetFloat("_DisolveAmount", disolveAmount);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (disolveAmount <= 0.0f)
+        if (disolveAmount >= 1.0f)
         {
             SceneManager.LoadScene(1);
         }
 
-        disolveAmount -= disolveSpeed * Time.deltaTime;
-        if (disolveAmount < 0.0f) disolveAmount = 0.0f;
+        disolveAmount += disolveSpeed * Time.deltaTime;
+        if (disolveAmount > 1.0f) disolveAmount = 1.0f;
         mat.SetFloat("_DisolveAmount", disolveAmount);
     }
 }
