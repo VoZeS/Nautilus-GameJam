@@ -9,6 +9,7 @@ public class Key : MonoBehaviour
     Rigidbody rb;
 
     GameObject attachedTo;
+    bool isDoor = false;
     [SerializeField] float impactForce = 500.0f;
     [SerializeField] float followSpeed;
 
@@ -25,6 +26,12 @@ public class Key : MonoBehaviour
         if (attachedTo == null) return;
 
         transform.position = Vector3.Lerp(transform.position, attachedTo.transform.position, followSpeed * Time.deltaTime);
+
+        if (isDoor && Vector3.Distance(transform.position, attachedTo.transform.position) < 0.05f)
+        {
+            attachedTo.GetComponent<KeyDoor>().KeyOn();
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -49,6 +56,7 @@ public class Key : MonoBehaviour
     {
         // sound
         attachedTo = go;
+        isDoor = true;
         followSpeed = followSpeed * 5.0f;
     }
 }
