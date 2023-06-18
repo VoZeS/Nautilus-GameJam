@@ -12,6 +12,7 @@ TagManager:
   - KeyDoor
   - SettingsManager
   - Lever
+  - SpikesTrigger
   layers:
   - Default
   - TransparentFX
