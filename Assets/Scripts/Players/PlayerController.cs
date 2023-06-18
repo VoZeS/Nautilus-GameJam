@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
     }
     public void JumpForce()
     {
-        rb.AddForce(new Vector3(0, jumpForce, 0));
+        if (onGround) rb.AddForce(new Vector3(0, jumpForce, 0));
     }
 
     IEnumerator RotateToRight()
