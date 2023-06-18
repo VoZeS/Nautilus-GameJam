@@ -41,7 +41,7 @@ public class InvisibleObject : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine("FadeInCoroutine");
             StartCoroutine("FadeOut");
-            gameObject.layer = LayerMask.NameToLayer("Outline");
+            gameObject.layer = LayerMask.NameToLayer("Ground");
         }
     }
 
@@ -62,7 +62,6 @@ public class InvisibleObject : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
         StartCoroutine("FadeOutCoroutine");
-        gameObject.layer = LayerMask.NameToLayer("Invisible");
     }
 
     IEnumerator FadeOutCoroutine()
@@ -76,6 +75,7 @@ public class InvisibleObject : MonoBehaviour
             yield return null;
         }
         mat.color = new Color(color.r, color.g, color.b, 0.0f);
+        gameObject.layer = LayerMask.NameToLayer("Invisible");
     }
 
     IEnumerator ErrorCoroutine()

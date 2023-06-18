@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
             }
 
             // movement
-            rb.velocity = new Vector3(movementInput * speed, 0, 0);
+            rb.velocity = new Vector3(movementInput * speed, rb.velocity.y, 0);
 
             // jump
             if (jumpInput && !jumping)

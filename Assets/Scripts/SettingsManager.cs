@@ -17,12 +17,18 @@ public class SettingsManager : MonoBehaviour
 
         if (objs.Length > 1)
         {
+            objs[0].GetComponent<SettingsManager>().SetInstance();
             Destroy(this.gameObject);
             return;
         }
 
         DontDestroyOnLoad(this.gameObject);
 
+        SetInstance();
+    }
+
+    public void SetInstance()
+    {
         instance = this;
     }
 
