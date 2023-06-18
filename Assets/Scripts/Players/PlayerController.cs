@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     float rotationAngle;
 
     Rigidbody rb;
+    [SerializeField] Animator animator;
 
     [Header("KeyAttached")]
     [NonEditable] public Key keyAttached;
@@ -109,8 +110,11 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(new Vector3(0, jumpForce, 0));
                 jumping = true;
                 speedAtJump = rb.velocity.x;
+                animator.SetTrigger("Jump");
                 Invoke("JumpDone", 0.5f);
             }
+
+            animator.SetTrigger("OnGround");
         }
         else if (airMovement < 1.0f)
         {
@@ -122,6 +126,9 @@ public class PlayerController : MonoBehaviour
             speedAtJump = rb.velocity.x;
             airMovement = 0.0f;
         }
+
+        animator.SetFloat("Speed", rb.velocity.x);
+        animator.SetFloat("Vertical_Speed", rb.velocity.y);
     }
 
     private void OnCollisionEnter(Collision collision)

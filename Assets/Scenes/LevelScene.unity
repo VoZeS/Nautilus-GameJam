@@ -13379,6 +13379,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerDetectorPlaceholder
       objectReference: {fileID: 0}
+    - target: {fileID: 6396432859165345364, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
 --- !u!1 &1810492048
@@ -13728,11 +13732,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Female_Idle
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 4246cd4055d050b48a4e15f0dc12a299, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5f8e1e8b220e7e14daef4925621b2343, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 4246cd4055d050b48a4e15f0dc12a299, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'LowManHips'\n\tTransform 'LowManRightLeg'\n\tTransform
+        'LowManLeftLeg'\n\tTransform 'LowManRightArm'\n\tTransform 'LowManLeftUpLeg'\n\tTransform
+        'LowManRightUpLeg'\n\tTransform 'LowManLeftArm'\n\tTransform 'LowManRightLeg'\n\tTransform
+        'LowManRightHandPinky1'\n\tTransform 'LowManRightHandRing1'\n\tand more ...\n\tFrom
+        animation clip 'Female_Walk'"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 4246cd4055d050b48a4e15f0dc12a299, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4246cd4055d050b48a4e15f0dc12a299, type: 3}
 --- !u!4 &1848905600 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4246cd4055d050b48a4e15f0dc12a299, type: 3}
+  m_PrefabInstance: {fileID: 1848905599}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1848905601 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 4246cd4055d050b48a4e15f0dc12a299, type: 3}
   m_PrefabInstance: {fileID: 1848905599}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1868773662
@@ -15719,7 +15746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: 0
   speed: 3
-  jumpForce: 300
+  jumpForce: 275
   airMovementSpeed: 1
   airMovementIncrement: 2
   airMovement: 0
@@ -15729,9 +15756,10 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 72
-  rotationSpeed: 100
+  rotationSpeed: 300
   lookingRight: 0
   rotationDirection: 0
+  animator: {fileID: 1848905601}
   keyAttached: {fileID: 0}
 --- !u!54 &1590317374189913603
 Rigidbody:
