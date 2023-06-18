@@ -53,7 +53,7 @@ public class FadeManager : MonoBehaviour
                 fadePhase = 0;
                 foreach (var go in messageOnFade)
                 {
-                    go.SendMessage("FadeOutFinish");
+                    //go.SendMessage("FadeOutFinish");
                 }
             }
         }
