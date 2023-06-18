@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 6843130103917848834}
   - component: {fileID: 6843130103917848840}
   m_Layer: 7
-  m_Name: PlayerProjectilePlaceholder
+  m_Name: PlayerGirl
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -544,7 +544,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 6843130103917848839}
-  echoAttack: {fileID: 6843130103917848840}
+  pEchoAttack: {fileID: 0}
+  dEchoAttack: {fileID: 0}
 --- !u!4 &5723203035358791569 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4246cd4055d050b48a4e15f0dc12a299, type: 3}
