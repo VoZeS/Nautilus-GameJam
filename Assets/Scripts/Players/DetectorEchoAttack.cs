@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class DetectorEchoAttack : MonoBehaviour
 {
+    [SerializeField] Animator animator;
+
     [SerializeField] ParticleSystem EchoParticles;
 
     bool echoInput;
@@ -21,8 +23,7 @@ public class DetectorEchoAttack : MonoBehaviour
     {
         if (echoInput && echoReady)
         {
-            EchoParticles.transform.rotation = Quaternion.identity;
-            EchoParticles.Play();
+            animator.SetTrigger("Attack");
             echoReady = false;
             Invoke("EchoReadyAgain", 2.0f);
         }
@@ -36,5 +37,11 @@ public class DetectorEchoAttack : MonoBehaviour
     void EchoReadyAgain()
     {
         echoReady = true;
+    }
+
+    public void CastAttack()
+    {
+        EchoParticles.transform.rotation = Quaternion.identity;
+        EchoParticles.Play();
     }
 }

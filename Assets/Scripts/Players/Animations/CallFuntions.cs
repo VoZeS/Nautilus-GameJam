@@ -5,7 +5,8 @@ using UnityEngine;
 public class CallFuntions : MonoBehaviour
 {
     [SerializeField] PlayerController controller;
-    [SerializeField] ProjectileEchoAttack echoAttack;
+    [SerializeField] ProjectileEchoAttack pEchoAttack;
+    [SerializeField] DetectorEchoAttack dEchoAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class CallFuntions : MonoBehaviour
 
     public void CallPlayerFuntionAttack()
     {
-        if (echoAttack) echoAttack.SpawnProjectile();
+        if (pEchoAttack) pEchoAttack.SpawnProjectile();
+        if (dEchoAttack) dEchoAttack.CastAttack();
     }
 }
