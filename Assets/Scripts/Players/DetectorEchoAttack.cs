@@ -9,8 +9,8 @@ public class DetectorEchoAttack : MonoBehaviour
 
     [SerializeField] ParticleSystem EchoParticles;
 
-    bool echoInput;
-    bool echoReady;
+    public bool echoInput;
+    public bool echoReady;
 
     // Start is called before the first frame update
     void Start()
