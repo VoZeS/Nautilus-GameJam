@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] InitialScreenManager manager;
+    [SerializeField] GameObject fadeGo;
 
     void Start()
     {
@@ -23,7 +24,8 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        // fade in
+        manager.CloseAllMenus();
+        fadeGo.SetActive(true);
     }
 
     public void Settings()

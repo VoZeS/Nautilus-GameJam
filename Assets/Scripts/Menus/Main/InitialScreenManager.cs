@@ -53,7 +53,7 @@ public class InitialScreenManager : MonoBehaviour
         }
     }
 
-    void CloseAllMenus()
+    public void CloseAllMenus()
     {
         mainMenu.SetActive(false);
         settingsMenu.SetActive(false);
