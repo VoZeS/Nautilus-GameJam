@@ -2534,10 +2534,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6517831103774487543, guid: c6b51d428a00d89488f5dcce0166c9dc, type: 3}
-      propertyPath: m_TagString
-      value: SettingsManager
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6b51d428a00d89488f5dcce0166c9dc, type: 3}
 --- !u!1 &872078661
