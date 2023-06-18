@@ -26,8 +26,8 @@ public class ProjectileEchoAttack : MonoBehaviour
         {
             Vector3 direction;
             if (aimingUp) direction = new Vector3(0, 0, 90);
-            else if (playerController.rotatingPhase < 0) direction = new Vector3(0, 180, 0);
-            else if (playerController.rotatingPhase < 0) direction = new Vector3(0, 0, 0);
+            else if (playerController.rotationDirection == -1) direction = new Vector3(0, 180, 0);
+            else if (playerController.rotationDirection == 1) direction = new Vector3(0, 0, 0);
             else if (playerController.lookingRight) direction = new Vector3(0, 0, 0);
             else direction = new Vector3(0, 180, 0);
             Instantiate(echoPrefab, transform.position, Quaternion.Euler(direction));

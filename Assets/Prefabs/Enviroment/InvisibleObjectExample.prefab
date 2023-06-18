@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 6127269834256667594}
   - component: {fileID: 6127269834256667597}
   - component: {fileID: 6127269834256667599}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: InvisibleObjectExample
   m_TagString: Invisible
   m_Icon: {fileID: 0}
@@ -171,4 +171,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeSpeed: 0.5
+  errorFadeSpeed: 2
   playersOnCollider: {fileID: 6127269833188101729}

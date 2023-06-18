@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - ElevatorCollider
   - EchoProjectile
+  - Key
+  - KeyDoor
   layers:
   - Default
   - TransparentFX

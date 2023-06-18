@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -27,11 +28,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask groundLayerMask;
 
     [Header("Rotation")]
+    public float rotationSpeed = 100.0f;
     public bool lookingRight;
-    [HideInInspector] public int rotatingPhase;
-    int necesaryRotatingPhases;
+    [HideInInspector] public int rotationDirection; // no rotation --> 0, right --> 1, left --> 2
+    float rotationAngle;
 
     Rigidbody rb;
+
+    [Header("KeyAttached")]
+    [NonEditable] public Key keyAttached;
 
     private void Start()
     {
@@ -66,13 +71,17 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
 
-        if (lookingRight) gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-        else gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
-        rotatingPhase = 0;
+        if (lookingRight) { gameObject.transform.rotation = Quaternion.Euler(0, 0, 0); rotationAngle = 0; }
+        else { gameObject.transform.rotation = Quaternion.Euler(0, 180, 0); rotationAngle = 180; }
+        rotationDirection = 0;
+
+        keyAttached = null;
     }
 
     void Update()
     {
+        rb.angularVelocity = new Vector3(0, 0, 0);
+
         onGround = Physics.BoxCast(transform.position, groundBoxSize / 2.0f, Vector3.down, Quaternion.identity, groundBoxDistance, groundLayerMask);
 
         if (onGround)
@@ -80,19 +89,15 @@ public class PlayerController : MonoBehaviour
             airMovement = 0.0f;
 
             // rotation
-            if (lookingRight && movementInput < 0 && rotatingPhase >= 0)
+            if (lookingRight && movementInput < 0 && rotationDirection != -1)
             {
-                if (rotatingPhase == 0) necesaryRotatingPhases = 181;
-                else necesaryRotatingPhases = Mathf.Abs(rotatingPhase);
+                StopAllCoroutines();
                 StartCoroutine("RotateToLeft");
-                StopCoroutine("RotateToRight");
             }
-            else if (!lookingRight && movementInput > 0 && rotatingPhase <= 0)
+            else if (!lookingRight && movementInput > 0 && rotationDirection != 1)
             {
-                if (rotatingPhase == 0) necesaryRotatingPhases = 181;
-                else necesaryRotatingPhases = Mathf.Abs(rotatingPhase);
+                StopAllCoroutines();
                 StartCoroutine("RotateToRight");
-                StopCoroutine("RotateToLeft");
             }
 
             // movement
@@ -119,6 +124,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (keyAttached != null && collision.gameObject.CompareTag("KeyDoor"))
+        {
+            keyAttached.UseKey(collision.gameObject);
+        }
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<float>();
@@ -132,26 +145,28 @@ public class PlayerController : MonoBehaviour
     IEnumerator RotateToRight()
     {
         lookingRight = true;
-        for (int i = 0; i < necesaryRotatingPhases - 1; i++)
+        rotationDirection = 1;
+        while (rotationAngle > 0.0f)
         {
-            rb.rotation *= Quaternion.Euler(0, -1.0f, 0);
-            rotatingPhase = i + 1;
+            rotationAngle -= rotationSpeed * Time.deltaTime;
+            rb.rotation = Quaternion.Euler(0, rotationAngle, 0);
             yield return null;
         }
-        rotatingPhase = 0;
+        rotationDirection = 0;
         rb.rotation = Quaternion.Euler(0, 0.0f, 0);
     }
 
     IEnumerator RotateToLeft()
     {
         lookingRight = false;
-        for (int i = 0; i < necesaryRotatingPhases - 1; i++)
+        rotationDirection = -1;
+        while (rotationAngle < 180.0f)
         {
-            rb.rotation *= Quaternion.Euler(0, 1.0f, 0);
-            rotatingPhase = -i - 1;
+            rotationAngle += rotationSpeed * Time.deltaTime;
+            rb.rotation = Quaternion.Euler(0, rotationAngle, 0);
             yield return null;
         }
-        rotatingPhase = 0;
+        rotationDirection = 0;
         rb.rotation = Quaternion.Euler(0, 180.0f, 0);
     }
 
