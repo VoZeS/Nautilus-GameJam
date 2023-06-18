@@ -18,6 +18,7 @@ public class SettingsManager : MonoBehaviour
         if (objs.Length > 1)
         {
             Destroy(this.gameObject);
+            return;
         }
 
         DontDestroyOnLoad(this.gameObject);
