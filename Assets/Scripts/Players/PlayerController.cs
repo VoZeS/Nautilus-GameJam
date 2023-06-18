@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Ground")]
     [NonEditable][SerializeField] bool onGround;
+    bool onGroundLastFrame = true;
     [SerializeField] Vector3 groundBoxSize;
     [SerializeField] float groundBoxDistance;
     [SerializeField] LayerMask groundLayerMask;
@@ -88,6 +89,8 @@ public class PlayerController : MonoBehaviour
         if (onGround)
         {
             airMovement = 0.0f;
+            if (!onGroundLastFrame) animator.SetTrigger("OnGround");
+            else animator.ResetTrigger("OnGround");
 
             // rotation
             if (lookingRight && movementInput < 0 && rotationDirection != -1)
@@ -107,14 +110,12 @@ public class PlayerController : MonoBehaviour
             // jump
             if (jumpInput && !jumping)
             {
-                rb.AddForce(new Vector3(0, jumpForce, 0));
+                //rb.AddForce(new Vector3(0, jumpForce, 0));
                 jumping = true;
                 speedAtJump = rb.velocity.x;
                 animator.SetTrigger("Jump");
                 Invoke("JumpDone", 0.5f);
             }
-
-            animator.SetTrigger("OnGround");
         }
         else if (airMovement < 1.0f)
         {
@@ -129,6 +130,8 @@ public class PlayerController : MonoBehaviour
 
         animator.SetFloat("Speed", rb.velocity.x);
         animator.SetFloat("Vertical_Speed", rb.velocity.y);
+
+        onGroundLastFrame = onGround;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -147,6 +150,10 @@ public class PlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         jumpInput = context.action.triggered;
+    }
+    public void JumpForce()
+    {
+        rb.AddForce(new Vector3(0, jumpForce, 0));
     }
 
     IEnumerator RotateToRight()

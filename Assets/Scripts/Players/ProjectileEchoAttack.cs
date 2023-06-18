@@ -5,12 +5,16 @@ using UnityEngine.InputSystem;
 
 public class ProjectileEchoAttack : MonoBehaviour
 {
+    [SerializeField] Animator animator;
+
     [SerializeField] GameObject echoPrefab;
     PlayerController playerController;
 
     bool echoInput;
     bool echoReady;
     bool aimingUp;
+
+    Vector3 direction;
 
     // Start is called before the first frame update
     void Start()
@@ -24,13 +28,19 @@ public class ProjectileEchoAttack : MonoBehaviour
     {
         if (echoInput && echoReady)
         {
-            Vector3 direction;
-            if (aimingUp) direction = new Vector3(0, 0, 90);
-            else if (playerController.rotationDirection == -1) direction = new Vector3(0, 180, 0);
-            else if (playerController.rotationDirection == 1) direction = new Vector3(0, 0, 0);
-            else if (playerController.lookingRight) direction = new Vector3(0, 0, 0);
-            else direction = new Vector3(0, 180, 0);
-            Instantiate(echoPrefab, transform.position, Quaternion.Euler(direction));
+            if (aimingUp)
+            {
+                direction = new Vector3(0, 0, 90);
+                animator.SetTrigger("Attack_Up");
+            }
+            else
+            {
+                if (playerController.rotationDirection == -1) direction = new Vector3(0, 180, 0);
+                else if (playerController.rotationDirection == 1) direction = new Vector3(0, 0, 0);
+                else if (playerController.lookingRight) direction = new Vector3(0, 0, 0);
+                else direction = new Vector3(0, 180, 0);
+                animator.SetTrigger("Attack_Front");
+            }
             echoReady = false;
             Invoke("EchoReadyAgain", 2.0f);
         }
@@ -49,5 +59,10 @@ public class ProjectileEchoAttack : MonoBehaviour
     void EchoReadyAgain()
     {
         echoReady = true;
+    }
+
+    public void SpawnProjectile()
+    {
+        Instantiate(echoPrefab, transform.position, Quaternion.Euler(direction));
     }
 }
