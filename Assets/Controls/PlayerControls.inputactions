@@ -178,7 +178,7 @@
                 {
                     "name": "",
                     "id": "406f222c-a502-4c65-8a33-751c9c01dc0a",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardWASD",
@@ -189,7 +189,7 @@
                 {
                     "name": "",
                     "id": "a4181fe2-4b5f-42ef-b43e-2be237efdf60",
-                    "path": "<Keyboard>/downArrow",
+                    "path": "<Keyboard>/rightShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardARROWS",
