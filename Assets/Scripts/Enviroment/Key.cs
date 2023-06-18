@@ -55,7 +55,7 @@ public class Key : MonoBehaviour
     public void UseKey(GameObject go)
     {
         // sound
-        attachedTo = go;
+        attachedTo = go.transform.Find("KeyPoint").gameObject;
         isDoor = true;
         followSpeed = followSpeed * 5.0f;
     }
