@@ -12,6 +12,8 @@ public class FadeManager : MonoBehaviour
     [SerializeField] float disolveSpeed;
     float disolveAmount;
 
+    [SerializeField] GameObject[] messageOnFade;
+
     void Awake()
     {
         instance = this;
@@ -36,6 +38,10 @@ public class FadeManager : MonoBehaviour
             {
                 disolveAmount = 1.0f;
                 fadePhase = 0;
+                foreach (var go in messageOnFade)
+                {
+                    go.SendMessage("FadeInFinish");
+                }
             }
         }
         else
@@ -45,6 +51,10 @@ public class FadeManager : MonoBehaviour
             {
                 disolveAmount = 0.0f;
                 fadePhase = 0;
+                foreach (var go in messageOnFade)
+                {
+                    go.SendMessage("FadeOutFinish");
+                }
             }
         }
         mat.SetFloat("_DisolveAmount", disolveAmount);

@@ -4929,7 +4929,7 @@ GameObject:
   - component: {fileID: 5554976085328493766}
   - component: {fileID: 1572755291974121532}
   m_Layer: 7
-  m_Name: PlayerDetectorPlaceholder
+  m_Name: PlayerBoy
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
