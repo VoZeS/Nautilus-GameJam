@@ -15,7 +15,10 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetButtonDown("Cancel"))
+        {
+            manager.OpenMenu(ACTIVE_MENU.MAIN);
+        }
     }
 
     public void Play()

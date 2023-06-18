@@ -10,6 +10,7 @@ TagManager:
   - EchoProjectile
   - Key
   - KeyDoor
+  - SettingsManager
   layers:
   - Default
   - TransparentFX

@@ -13,13 +13,22 @@ public class SettingsManager : MonoBehaviour
 
     private void Awake()
     {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("SettingsManager");
+
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
+
         instance = this;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame

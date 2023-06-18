@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public enum ACTIVE_MENU
 {
@@ -11,10 +12,11 @@ public enum ACTIVE_MENU
 
 public class InitialScreenManager : MonoBehaviour
 {
-    [NonEditable] ACTIVE_MENU activeMenu;
     public GameObject mainMenu;
     public GameObject settingsMenu;
     public GameObject creditsMenu;
+    public GameObject mainMenuFirstButton;
+    public GameObject settingsMenuFirstButton;
 
     // Start is called before the first frame update
     void Start()
@@ -22,16 +24,12 @@ public class InitialScreenManager : MonoBehaviour
         mainMenu.SetActive(true);
         settingsMenu.SetActive(false);
         creditsMenu.SetActive(false);
-        activeMenu = ACTIVE_MENU.MAIN;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
-        {
-            OpenMenu(ACTIVE_MENU.MAIN);
-        }
+        
     }
 
     public void OpenMenu(ACTIVE_MENU menuToOpen)
@@ -41,9 +39,11 @@ public class InitialScreenManager : MonoBehaviour
         {
             case ACTIVE_MENU.MAIN:
                 mainMenu.SetActive(true);
+                EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
                 break;
             case ACTIVE_MENU.SETTINGS:
                 settingsMenu.SetActive(true);
+                EventSystem.current.SetSelectedGameObject(settingsMenuFirstButton);
                 break;
             case ACTIVE_MENU.CREDITS:
                 creditsMenu.SetActive(true);
