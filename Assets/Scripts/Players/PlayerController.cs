@@ -18,8 +18,6 @@ public class PlayerController : MonoBehaviour
     bool jumping = false;
     [SerializeField][Range(0.0f, 1.0f)] float airMovementSpeed = 0.2f;
     [SerializeField] float airMovementIncrement = 1.0f;
-    [NonEditable][SerializeField] float airMovement = 0.0f;
-    float speedAtJump = 0.0f;
 
     [Header("Ground")]
     [NonEditable][SerializeField] bool onGround;
@@ -90,7 +88,6 @@ public class PlayerController : MonoBehaviour
 
         if (onGround)
         {
-            airMovement = 0.0f;
             if (!onGroundLastFrame) animator.SetTrigger("OnGround");
             else animator.ResetTrigger("OnGround");
 
@@ -106,28 +103,24 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine("RotateToRight");
             }
 
+            animator.SetBool("IsRotating", rotationDirection != 0);
+
             // movement
             rb.velocity = new Vector3(movementInput * speed, rb.velocity.y, 0);
 
             // jump
             if (jumpInput && !jumping)
             {
-                //rb.AddForce(new Vector3(0, jumpForce, 0));
+                rb.velocity = new Vector3(rb.velocity.x * speed, 0, 0);
+                rb.AddForce(new Vector3(0, jumpForce, 0));
                 jumping = true;
-                speedAtJump = rb.velocity.x;
                 animator.SetTrigger("Jump");
-                Invoke("JumpDone", 0.5f);
+                Invoke("JumpDone", 0.1f);
             }
         }
-        else if (airMovement < 1.0f)
+        else
         {
-            rb.velocity = new Vector3(Mathf.Lerp(speedAtJump, movementInput * speed * airMovementSpeed, airMovement), rb.velocity.y, 0);
-            airMovement += Time.deltaTime * airMovementIncrement;
-        }
-        else if ((rb.velocity.x > 0 && movementInput < 0) || (rb.velocity.x < 0 && movementInput > 0))
-        {
-            speedAtJump = rb.velocity.x;
-            airMovement = 0.0f;
+            rb.velocity = new Vector3(movementInput * speed * airMovementSpeed, rb.velocity.y, 0);
         }
 
         animator.SetFloat("Speed", rb.velocity.x);
