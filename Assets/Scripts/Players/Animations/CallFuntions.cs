@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CallFuntions : MonoBehaviour
 {
-    [SerializeField] PlayerController controller;
     [SerializeField] ProjectileEchoAttack pEchoAttack;
     [SerializeField] DetectorEchoAttack dEchoAttack;
 
@@ -18,11 +17,6 @@ public class CallFuntions : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void CallPlayerFuntionJump()
-    {
-        controller.JumpForce();
     }
 
     public void CallPlayerFuntionAttack()

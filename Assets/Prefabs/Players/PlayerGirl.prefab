@@ -115,8 +115,7 @@ MonoBehaviour:
   speed: 3
   jumpForce: 275
   airMovementSpeed: 1
-  airMovementIncrement: 2
-  airMovement: 0
+  airMovementIncrement: 1
   onGround: 0
   groundBoxSize: {x: 0.4, y: 0.01, z: 0.4}
   groundBoxDistance: 0.25
@@ -237,6 +236,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1841068461896392171}
   echoPrefab: {fileID: 4320478287322746479, guid: 2e00c94b302023d478d13bc4ff1f6e12, type: 3}
+  upgraded: 0
+  cooldown: 2
+  upgradeCooldown: 1.5
 --- !u!1001 &5252991203506577530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -560,7 +562,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca439b09163ac214a9c2c1f46f57791d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 6843130103917848839}
   pEchoAttack: {fileID: 6843130103917848840}
   dEchoAttack: {fileID: 0}
 --- !u!4 &5723203035358791569 stripped
