@@ -5843,6 +5843,7 @@ GameObject:
   - component: {fileID: 7427982338212271229}
   - component: {fileID: 5879837047384890515}
   - component: {fileID: 2207865014310347101}
+  - component: {fileID: 1951221920}
   m_Layer: 0
   m_Name: _TrampaPinchosGroup
   m_TagString: Untagged
@@ -5949,8 +5950,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 21.55779, y: 17.278484, z: 16.719387}
-  m_Center: {x: -14.506537, y: -21.726358, z: 22.01959}
+  m_Size: {x: 21.55779, y: 17.959269, z: 16.719387}
+  m_Center: {x: -14.506537, y: -21.385937, z: 22.01959}
 --- !u!54 &2207865014310347101
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5967,6 +5968,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1951221920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2844290110363118364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e238f07c424ae488f8f633126aff80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3099544192169595953
 GameObject:
   m_ObjectHideFlags: 0
@@ -19081,19 +19094,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c831e70955f07bf45bbec6e1e5ec9a42, type: 3}
   m_PrefabInstance: {fileID: 7455514495338259010}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8406780672382938320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7761434160906149651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 157bdce0cbba34b47ba55f82cd6a9683, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isLeverActivated: 0
 --- !u!65 &4855558040046637745
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19107,6 +19107,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.1170728, y: 3.0839543, z: 3.4085584}
   m_Center: {x: -0.058317736, y: 1.0419782, z: 0.17986986}
+--- !u!114 &8406780672382938320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7761434160906149651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157bdce0cbba34b47ba55f82cd6a9683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLeverActivated: 0
 --- !u!1001 &7567771162025340541
 PrefabInstance:
   m_ObjectHideFlags: 0

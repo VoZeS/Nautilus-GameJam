@@ -15,14 +15,12 @@ public class FadeIntroLogic : MonoBehaviour
 
     float alpha1 = 0;
     float alpha2 = 0;
-    float fillTime = 0;
 
     private void Start()
     {
         timer = 0.0f;
         alpha1 = 0.0f;
         alpha2 = 1.0f;
-        fillTime = 0.0f;
     }
     // Update is called once per frame
     void Update()

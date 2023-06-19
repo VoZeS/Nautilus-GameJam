@@ -13,6 +13,7 @@ TagManager:
   - SettingsManager
   - Lever
   - SpikesTrigger
+  - DieCollider
   layers:
   - Default
   - TransparentFX

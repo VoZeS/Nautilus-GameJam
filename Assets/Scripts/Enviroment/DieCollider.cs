@@ -7,7 +7,8 @@ public class DieCollider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<MeshRenderer>().enabled = false;
+        if(gameObject.tag == "DieCollider")
+            GetComponent<MeshRenderer>().enabled = false;
     }
 
     // Update is called once per frame
