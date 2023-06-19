@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 100.0f;
     public bool lookingRight;
     [HideInInspector] public int rotationDirection; // no rotation --> 0, right --> 1, left --> 2
-    float rotationAngle;
+    [HideInInspector] public float rotationAngle;
 
     Rigidbody rb;
     [SerializeField] Animator animator;

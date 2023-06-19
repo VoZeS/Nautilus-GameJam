@@ -36,11 +36,27 @@ public class RespawnManager : MonoBehaviour
 
     void Respawn()
     {
-        playerBoy.transform.position = currentCheckpoint.transform.Find("BoyPoint").position;
-        playerBoy.transform.rotation = currentCheckpoint.transform.Find("BoyPoint").rotation;
+        Transform boyPoint = currentCheckpoint.transform.Find("BoyPoint");
+        playerBoy.transform.position = boyPoint.position;
+        playerBoy.transform.rotation = boyPoint.rotation;
+        PlayerController boyController = playerBoy.GetComponent<PlayerController>();
+        if (boyPoint.rotation.eulerAngles.y == 180) boyController.lookingRight = false;
+        else boyController.lookingRight = true;
+        boyController.rotationAngle = boyPoint.rotation.eulerAngles.y;
 
-        playerGirl.transform.position = currentCheckpoint.transform.Find("GirlPoint").position;
-        playerGirl.transform.rotation = currentCheckpoint.transform.Find("GirlPoint").rotation;
+        Transform girlPoint = currentCheckpoint.transform.Find("GirlPoint");
+        playerGirl.transform.position = girlPoint.position;
+        playerGirl.transform.rotation = girlPoint.rotation;
+        PlayerController girlController = playerGirl.GetComponent<PlayerController>();
+        if (girlPoint.rotation.eulerAngles.y == 180) girlController.lookingRight = false;
+        else girlController.lookingRight = true;
+        girlController.rotationAngle = girlPoint.rotation.eulerAngles.y;
+
+        GameObject[] keys = GameObject.FindGameObjectsWithTag("Key");
+        foreach (GameObject key in keys)
+        {
+            key.GetComponent<Key>().RespawnKey();
+        }
     }
 
     public void FadeInFinish()

@@ -22,5 +22,9 @@ public class DieCollider : MonoBehaviour
         {
             FadeManager.instance.FadeIn();
         }
+        else if (collision.gameObject.CompareTag("Key"))
+        {
+            collision.gameObject.GetComponent<Key>().RespawnKey();
+        }
     }
 }

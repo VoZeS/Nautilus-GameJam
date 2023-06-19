@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Timeline;
+using UnityEngine.UIElements;
 
 public class Key : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Key : MonoBehaviour
     bool isDoor = false;
     [SerializeField] float impactForce = 500.0f;
     [SerializeField] float followSpeed;
+    [SerializeField] Transform respawnTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +51,7 @@ public class Key : MonoBehaviour
             collision.gameObject.GetComponent<PlayerController>().keyAttached = this;
             attachedTo = collision.transform.Find("KeyPoint").gameObject;
             GetComponent<Collider>().enabled = false;
+            rb.useGravity = false;
         }
     }
 
@@ -58,5 +61,11 @@ public class Key : MonoBehaviour
         attachedTo = go.transform.Find("KeyPoint").gameObject;
         isDoor = true;
         followSpeed = followSpeed * 5.0f;
+    }
+
+    public void RespawnKey()
+    {
+        transform.position = respawnTransform.position;
+        rb.velocity = Vector3.zero;
     }
 }
