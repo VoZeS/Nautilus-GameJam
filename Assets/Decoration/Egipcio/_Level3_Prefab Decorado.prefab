@@ -6271,7 +6271,7 @@ PrefabInstance:
     - target: {fileID: 3886563365994264059, guid: dd85e9b27d339314db94c2a5fcb1192a, type: 3}
       propertyPath: lever
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7506075400723872091}
     - target: {fileID: 3886563365994264059, guid: dd85e9b27d339314db94c2a5fcb1192a, type: 3}
       propertyPath: realElevator
       value: 
