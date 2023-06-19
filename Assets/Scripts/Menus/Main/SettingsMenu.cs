@@ -97,8 +97,16 @@ public class SettingsMenu : MonoBehaviour
     {
         Screen.fullScreen = fullscreen;
 
-        if (fullscreen) imageFullscreen.enabled = true;
-        else imageFullscreen.enabled = false;
+        if (fullscreen)
+        {
+            Screen.SetResolution(1920, 1080, true);
+            imageFullscreen.enabled = true;
+        }
+        else
+        {
+            Screen.SetResolution(1280, 720, false);
+            imageFullscreen.enabled = false;
+        }
     }
 
     public void ToggleVsync()
