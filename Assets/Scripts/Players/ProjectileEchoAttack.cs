@@ -16,16 +16,24 @@ public class ProjectileEchoAttack : MonoBehaviour
 
     Vector3 direction;
 
+    [NonEditable][SerializeField] bool upgraded;
+    [SerializeField] float cooldown = 2.0f;
+    [SerializeField] float upgradeCooldown = 1.5f;
+
     // Start is called before the first frame update
     void Start()
     {
         playerController = GetComponent<PlayerController>();
         echoReady = true;
+
+        upgraded = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (ManagePause.instance.paused) return;
+
         if (echoInput && echoReady)
         {
             if (aimingUp)
@@ -42,7 +50,8 @@ public class ProjectileEchoAttack : MonoBehaviour
                 animator.SetTrigger("Attack_Front");
             }
             echoReady = false;
-            Invoke("EchoReadyAgain", 2.0f);
+            if (upgraded) Invoke("EchoReadyAgain", upgradeCooldown);
+            else Invoke("EchoReadyAgain", cooldown);
         }
     }
 
@@ -64,5 +73,10 @@ public class ProjectileEchoAttack : MonoBehaviour
     public void SpawnProjectile()
     {
         Instantiate(echoPrefab, transform.position, Quaternion.Euler(direction));
+    }
+
+    public void Upgrade()
+    {
+        upgraded = true;
     }
 }

@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class SettingsMenu : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] InitialScreenManager manager;
-
     // variables
     bool fullscreen = true;
     bool vsync = true;
@@ -60,13 +58,14 @@ public class SettingsMenu : MonoBehaviour
             }
             else
             {
-                manager.OpenMenu(ACTIVE_MENU.MAIN);
+                gameObject.SetActive(false);
                 if (onError)
                 {
                     errorPanel.color = new Color(errorPanel.color.r, errorPanel.color.g, errorPanel.color.b, 0.0f);
                     errorText.color = new Color(errorText.color.r, errorText.color.g, errorText.color.b, 0.0f);
                     onError = false;
                 }
+                ManagePause.instance.PauseGame(false);
             }
         }
 
@@ -214,6 +213,11 @@ public class SettingsMenu : MonoBehaviour
     public void SetFxVolume(float volume)
     {
         audioMixer.SetFloat("FxVolume", volume * 10.0f);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
     IEnumerator ErrorCoroutine()
