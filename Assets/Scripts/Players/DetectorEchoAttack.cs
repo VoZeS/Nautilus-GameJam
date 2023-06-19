@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,20 +13,29 @@ public class DetectorEchoAttack : MonoBehaviour
     public bool echoInput;
     public bool echoReady;
 
+    [NonEditable][SerializeField] bool upgraded;
+    [SerializeField] float cooldown = 2.0f;
+    [SerializeField] float upgradeCooldown = 1.5f;
+
     // Start is called before the first frame update
     void Start()
     {
         echoReady = true;
+
+        upgraded = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (ManagePause.instance.paused) return;
+
         if (echoInput && echoReady)
         {
             animator.SetTrigger("Attack");
             echoReady = false;
-            Invoke("EchoReadyAgain", 2.0f);
+            if (upgraded) Invoke("EchoReadyAgain", upgradeCooldown);
+            else Invoke("EchoReadyAgain", cooldown);
         }
     }
 
@@ -43,5 +53,10 @@ public class DetectorEchoAttack : MonoBehaviour
     {
         EchoParticles.transform.rotation = Quaternion.identity;
         EchoParticles.Play();
+    }
+
+    public void Upgrade()
+    {
+        upgraded = true;
     }
 }
