@@ -82,6 +82,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (ManagePause.instance.paused) return;
+
         rb.angularVelocity = new Vector3(0, 0, 0);
 
         onGround = Physics.BoxCast(transform.position, groundBoxSize / 2.0f, Vector3.down, Quaternion.identity, groundBoxDistance, groundLayerMask);
