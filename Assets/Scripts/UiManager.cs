@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
 public class UiManager : MonoBehaviour
 {
     public TMP_Text yearsText;
@@ -12,7 +13,9 @@ public class UiManager : MonoBehaviour
     public GameObject guitar;
     private DetectorEchoAttack detectorEchoAttack;
     public int levelInd;
-    public int CountFPS = 30;
+    float CountFPS;
+
+
     public float duration = 1f;
     private Coroutine CountingCoroutine;
 
@@ -29,6 +32,7 @@ public class UiManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CountFPS = 1 / Time.deltaTime;
         detectorEchoAttack = GameObject.Find("PlayerBoy").GetComponent<DetectorEchoAttack>();
         
         years = 3000f;
