@@ -28,7 +28,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log(levelInd);
+        //Debug.Log(levelInd);
 
         switch (levelInd)
         {
