@@ -17,7 +17,6 @@ public class LevelVolume : MonoBehaviour
             GlobalVolume.instance.ChangeProfile(profile);
             uiEdit = GameObject.Find("HUD").GetComponent<UiManager>();
             uiEdit.levelInd = level;
-
         }
     }
 }

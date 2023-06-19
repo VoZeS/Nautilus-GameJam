@@ -6,6 +6,7 @@ public class LeverLogic : MonoBehaviour
 {
     public bool isLeverActivated = false;
 
+    public Animator animatorLever;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,12 +16,15 @@ public class LeverLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.tag == "EchoProjectile")
+        if (collision.gameObject.tag == "EchoProjectile")
+        {
             isLeverActivated = true;
+            animatorLever.SetBool("isActivated", true);
+
+        }
     }
 }

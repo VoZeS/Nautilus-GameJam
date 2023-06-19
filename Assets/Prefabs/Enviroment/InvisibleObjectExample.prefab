@@ -170,6 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f652c935049271f43b421285dff3ea98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeSpeed: 0.2
+  fadeSpeed: 1
   errorFadeSpeed: 2
   playersOnCollider: {fileID: 6127269833188101729}
