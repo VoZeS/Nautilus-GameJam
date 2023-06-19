@@ -44,7 +44,9 @@ public class GlobalVolume : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine("BlendProfiles");
         }
+        Debug.Log("Current volume:"+ currentVolume);
     }
+
 
     IEnumerator BlendProfiles()
     {
