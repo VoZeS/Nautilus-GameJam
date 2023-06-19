@@ -7,7 +7,7 @@ public class InvisibleObject : MonoBehaviour
     Material mat;
     [SerializeField] float fadeSpeed;
     [SerializeField] float errorFadeSpeed;
-    bool onError;
+    int state; // 0 --> none, 1 --> visible, 2 --> error
 
     [SerializeField] CountPlayersOnCollider playersOnCollider;
 
@@ -18,7 +18,7 @@ public class InvisibleObject : MonoBehaviour
         mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 0.0f);
 
         gameObject.layer = LayerMask.NameToLayer("Invisible");
-        onError = false;
+        state = 0;
     }
 
     // Update is called once per frame
@@ -29,19 +29,31 @@ public class InvisibleObject : MonoBehaviour
 
     public void FadeIn()
     {
-        if (onError) return;
-        // check if player in zone
-        if (playersOnCollider.playersOnCollider > 0)
+        if (state == 2) return;
+        else if (state == 1)
         {
-            onError = true;
-            StartCoroutine("ErrorCoroutine");
-        }
-        else
-        {
+            state = 1;
             StopAllCoroutines();
             StartCoroutine("FadeInCoroutine");
             StartCoroutine("FadeOut");
             gameObject.layer = LayerMask.NameToLayer("Ground");
+        }
+        else
+        {
+            // check if player in zone
+            if (playersOnCollider.playersOnCollider > 0)
+            {
+                state = 2;
+                StartCoroutine("ErrorCoroutine");
+            }
+            else
+            {
+                state = 1;
+                StopAllCoroutines();
+                StartCoroutine("FadeInCoroutine");
+                StartCoroutine("FadeOut");
+                gameObject.layer = LayerMask.NameToLayer("Ground");
+            }
         }
     }
 
@@ -76,6 +88,7 @@ public class InvisibleObject : MonoBehaviour
         }
         mat.color = new Color(color.r, color.g, color.b, 0.0f);
         gameObject.layer = LayerMask.NameToLayer("Invisible");
+        state = 0;
     }
 
     IEnumerator ErrorCoroutine()
@@ -104,6 +117,6 @@ public class InvisibleObject : MonoBehaviour
             }
         }
         mat.color = new Color(color.r, color.g, color.b, 0.0f);
-        onError = false;
+        state = 0;
     }
 }

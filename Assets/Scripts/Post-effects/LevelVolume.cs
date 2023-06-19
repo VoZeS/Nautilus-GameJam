@@ -15,9 +15,8 @@ public class LevelVolume : MonoBehaviour
         if (other.gameObject.CompareTag("MainCamera"))
         {
             GlobalVolume.instance.ChangeProfile(profile);
-            uiEdit = GameObject.Find("UI").GetComponent<UiManager>();
+            uiEdit = GameObject.Find("HUD").GetComponent<UiManager>();
             uiEdit.levelInd = level;
-
         }
     }
 }

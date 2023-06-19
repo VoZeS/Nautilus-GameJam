@@ -74,7 +74,7 @@ ModelImporter:
       name: Female_Jump_Up
       takeName: Take 001
       internalID: 0
-      firstFrame: 1
+      firstFrame: 6
       lastFrame: 10
       wrapMode: 0
       orientationOffsetY: 0

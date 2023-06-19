@@ -61,6 +61,12 @@ public class SettingsMenu : MonoBehaviour
             else
             {
                 manager.OpenMenu(ACTIVE_MENU.MAIN);
+                if (onError)
+                {
+                    errorPanel.color = new Color(errorPanel.color.r, errorPanel.color.g, errorPanel.color.b, 0.0f);
+                    errorText.color = new Color(errorText.color.r, errorText.color.g, errorText.color.b, 0.0f);
+                    onError = false;
+                }
             }
         }
 
@@ -97,8 +103,16 @@ public class SettingsMenu : MonoBehaviour
     {
         Screen.fullScreen = fullscreen;
 
-        if (fullscreen) imageFullscreen.enabled = true;
-        else imageFullscreen.enabled = false;
+        if (fullscreen)
+        {
+            Screen.SetResolution(1920, 1080, true);
+            imageFullscreen.enabled = true;
+        }
+        else
+        {
+            Screen.SetResolution(1280, 720, false);
+            imageFullscreen.enabled = false;
+        }
     }
 
     public void ToggleVsync()
