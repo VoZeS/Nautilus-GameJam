@@ -9,10 +9,10 @@ using UnityEngine.EventSystems;
 public class PauseMenu : MonoBehaviour
 {
     // variables
-    bool fullscreen = true;
-    bool vsync = true;
-    int controllerType1 = 2;
-    int controllerType2 = 2;
+    bool fullscreen;
+    bool vsync;
+    int controllerType1;
+    int controllerType2;
 
     // ui elements
     public Image imageFullscreen;
@@ -36,6 +36,11 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        fullscreen = (PlayerPrefs.GetInt("Fullscreen", 1) != 0);
+        vsync = (PlayerPrefs.GetInt("Vsync", 1) != 0);
+        controllerType1 = PlayerPrefs.GetInt("ControllerType1", 0);
+        controllerType2 = PlayerPrefs.GetInt("ControllerType2", 1);
+
         CalculateFullscreen();
         CalculateVsync();
         CalculateController(true);
@@ -65,6 +70,11 @@ public class PauseMenu : MonoBehaviour
                     errorText.color = new Color(errorText.color.r, errorText.color.g, errorText.color.b, 0.0f);
                     onError = false;
                 }
+
+                PlayerPrefs.SetInt("Fullscreen", (fullscreen ? 1 : 0));
+                PlayerPrefs.SetInt("Vsync", (vsync ? 1 : 0));
+                PlayerPrefs.SetInt("ControllerType1", controllerType1);
+                PlayerPrefs.SetInt("ControllerType2", controllerType2);
                 ManagePause.instance.PauseGame(false);
             }
         }
