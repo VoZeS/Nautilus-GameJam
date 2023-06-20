@@ -7,6 +7,9 @@ using UnityEngine.UIElements;
 
 public class Key : MonoBehaviour
 {
+
+    AudioSource audioSource;
+
     Rigidbody rb;
 
     [SerializeField] GameObject attachedTo;
@@ -15,10 +18,14 @@ public class Key : MonoBehaviour
     [SerializeField] float followSpeed;
     [SerializeField] Transform respawnTransform;
 
+    public AudioClip grab;
+    public AudioClip insert;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         attachedTo = null;
     }
 
@@ -52,6 +59,9 @@ public class Key : MonoBehaviour
             attachedTo = collision.transform.Find("KeyPoint").gameObject;
             GetComponent<Collider>().enabled = false;
             rb.useGravity = false;
+
+            audioSource.clip = grab;
+            audioSource.Play();
         }
     }
 
@@ -61,6 +71,9 @@ public class Key : MonoBehaviour
         attachedTo = go.transform.Find("KeyPoint").gameObject;
         isDoor = true;
         followSpeed = followSpeed * 5.0f;
+
+        audioSource.clip = insert;
+        audioSource.Play();
     }
 
     public void RespawnKey()
