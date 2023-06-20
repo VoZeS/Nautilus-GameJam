@@ -57,7 +57,7 @@
                 {
                     "name": "",
                     "id": "e7358de6-683c-44f8-bd67-4ee1c236a838",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardWASD",
@@ -68,7 +68,7 @@
                 {
                     "name": "",
                     "id": "51fc89fb-c66e-4bae-b1e2-3d042fcef9b7",
-                    "path": "<Keyboard>/rightCtrl",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardARROWS",

@@ -11,14 +11,21 @@ public class UiManager : MonoBehaviour
     
     public GameObject microphone;
     public GameObject guitar;
+    private string aCrist = " AC";
     private DetectorEchoAttack detectorEchoAttack;
     public int levelInd;
+    private bool inL1 = true;
+    private bool inL2 = false;
+    private bool inL3 = false;
+    private bool inL4 = false;
+    private bool inL5 = false;
 
 
-    public float desiredNumb=3000;
+
+    public float desiredNumb;
     public float initialNumb=3000;
-    public float currentNumb=3000;
-    public float animationTime = 0.5f;
+    public float currentNumb;
+    public float animationTime = 1f;
 
 
     public void SetNumber(float value)
@@ -33,8 +40,15 @@ public class UiManager : MonoBehaviour
     void Start()
     {
         detectorEchoAttack = GameObject.Find("PlayerBoy").GetComponent<DetectorEchoAttack>();
-        
-        
+
+        animationTime = 1f;
+        initialNumb = 3000;
+        inL1 = true;
+        inL2 = false;
+        inL3 = false;
+        inL4 = false;
+        inL5 = false;
+        aCrist = " AC";
     }
 
     // Update is called once per frame
@@ -44,23 +58,62 @@ public class UiManager : MonoBehaviour
         switch (levelInd)
         {
             case 1:
-                SetNumber(3000);
+                if (inL1)
+                {
+                    SetNumber(3000);
+                    inL1 = false;
+                    inL2 = true;
+                    aCrist = " AC";
+                }
+                
                 break;
 
             case 2:
-                SetNumber(1600);
+                if (inL2)
+                {
+                    SetNumber(1492);
+                    inL2 = false;
+                    inL1 = true;
+                    inL3 = true;
+                    aCrist = " AC";
+                }
+                
                 break;
 
             case 3:
-                SetNumber(500);
+                if(inL3)
+                {
+                    SetNumber(2181);
+                    inL3 = false;
+                    inL2 = true;
+                    inL4 = true;
+                    aCrist = " BC";
+                }
+                
                 break;
 
             case 4:
-                SetNumber(1600);
+                if (inL4)
+                {
+                    SetNumber(1492);
+                    inL4 = false;
+                    inL3 = true;
+                    inL5 = true;
+                    aCrist = " AC";
+
+                }
+                
                 break;
 
             case 5:
-                SetNumber(3000);
+                if (inL5)
+                {
+                    SetNumber(3000);
+                    inL5 = false;
+                    inL4 = true;
+                    aCrist = " AC";
+                }
+                
                 break;
 
         }
@@ -82,7 +135,7 @@ public class UiManager : MonoBehaviour
             }
             else
             {
-                currentNumb -= (animationTime * Time.deltaTime) * (desiredNumb - initialNumb);
+                currentNumb -= (animationTime * Time.deltaTime) * (initialNumb - desiredNumb);
                 if (currentNumb <= desiredNumb)
                 {
                     currentNumb = desiredNumb;
@@ -90,7 +143,7 @@ public class UiManager : MonoBehaviour
                 }
 
             }
-            yearsText.text = "Actual Year: "+currentNumb.ToString()+" AC" ;
+            yearsText.text = "Actual Year: "+currentNumb.ToString("0")+ aCrist  ;
         }
         
 
