@@ -9,7 +9,7 @@ public class Key : MonoBehaviour
 {
     Rigidbody rb;
 
-    GameObject attachedTo;
+    [SerializeField] GameObject attachedTo;
     bool isDoor = false;
     [SerializeField] float impactForce = 500.0f;
     [SerializeField] float followSpeed;
@@ -31,7 +31,7 @@ public class Key : MonoBehaviour
 
         if (isDoor && Vector3.Distance(transform.position, attachedTo.transform.position) < 0.05f)
         {
-            attachedTo.GetComponent<KeyDoor>().KeyOn();
+            attachedTo.transform.parent.GetComponent<KeyDoor>().KeyOn();
             gameObject.SetActive(false);
         }
     }

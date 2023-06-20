@@ -6,6 +6,7 @@ public class KeyDoor : MonoBehaviour
 {
     [SerializeField] Transform keyPoint;
     Animator animator;
+    [SerializeField] Animator secondAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -22,5 +23,6 @@ public class KeyDoor : MonoBehaviour
     public void KeyOn()
     {
         animator.SetTrigger("Open");
+        if (secondAnimator) secondAnimator.SetTrigger("Open");
     }
 }
