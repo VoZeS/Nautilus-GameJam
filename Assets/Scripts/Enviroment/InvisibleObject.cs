@@ -6,7 +6,6 @@ using static Unity.Burst.Intrinsics.X86;
 public class InvisibleObject : MonoBehaviour
 {
     Material mat;
-    Color matStartColor;
     [SerializeField] int zone;
     [SerializeField] GameObject riftFuture;
     [SerializeField] GameObject riftMedieval;
@@ -25,11 +24,11 @@ public class InvisibleObject : MonoBehaviour
     {
         // object
         GetComponent<Renderer>().material.SetFloat("_DisolveAmount", 0.0f);
-        Material instance = new Material(Shader.Find("Shader Graphs/RiftShaderFront"));
+        Material instance = new Material(Shader.Find("Shader Graphs/InvisibleObjectShader"));
         Material currentMat = GetComponent<Renderer>().material;
         instance.CopyPropertiesFromMaterial(currentMat);
         mat = GetComponent<Renderer>().material = instance;
-        matStartColor = mat.GetColor("_Color");
+        mat.SetInt("_Error", 0);
 
         gameObject.layer = LayerMask.NameToLayer("Invisible");
         state = 0;
@@ -121,8 +120,7 @@ public class InvisibleObject : MonoBehaviour
 
     IEnumerator ErrorCoroutine()
     {
-        Color aux = new Color(0.65f, 0, 0, 1);
-        mat.SetColor("_Color", aux);
+        mat.SetInt("_Error", 1);
         float disolveAmount = mat.GetFloat("_DisolveAmount");
         for (int i = 0; i < 6; i++)
         {
@@ -146,8 +144,7 @@ public class InvisibleObject : MonoBehaviour
             }
         }
         mat.SetFloat("_DisolveAmount", disolveAmount);
-        aux = new Color(matStartColor.r, matStartColor.g, matStartColor.b, matStartColor.a);
-        mat.SetColor("_Color", aux);
+        mat.SetInt("_Error", 0);
         state = 0;
     }
 }
