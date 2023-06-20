@@ -7,6 +7,7 @@ public class ProjectileEchoAttack : MonoBehaviour
 {
     [SerializeField] Animator animator;
 
+    [SerializeField] Transform spawn;
     [SerializeField] GameObject echoPrefab;
     PlayerController playerController;
 
@@ -72,7 +73,7 @@ public class ProjectileEchoAttack : MonoBehaviour
 
     public void SpawnProjectile()
     {
-        Instantiate(echoPrefab, transform.position, Quaternion.Euler(direction));
+        Instantiate(echoPrefab, spawn.position, Quaternion.Euler(direction));
     }
 
     public void Upgrade()

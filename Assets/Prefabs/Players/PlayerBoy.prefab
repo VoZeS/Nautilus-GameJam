@@ -5005,7 +5005,7 @@ MonoBehaviour:
   groundBoxDistance: 0.25
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
   rotationSpeed: 300
   lookingRight: 0
   rotationDirection: 0
