@@ -2091,6 +2091,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 6.19
       objectReference: {fileID: 0}
+    - target: {fileID: 1386197384385978090, guid: e871e09fe581cca4cb8cd5314821aa6d, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2574496771239079693, guid: e871e09fe581cca4cb8cd5314821aa6d, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -2110,6 +2114,10 @@ PrefabInstance:
     - target: {fileID: 5942638620663612207, guid: e871e09fe581cca4cb8cd5314821aa6d, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189174831916759175, guid: e871e09fe581cca4cb8cd5314821aa6d, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e871e09fe581cca4cb8cd5314821aa6d, type: 3}
@@ -2648,6 +2656,10 @@ PrefabInstance:
       propertyPath: playerParent
       value: 
       objectReference: {fileID: 28119272}
+    - target: {fileID: 8401872479458592466, guid: 094b3e454afe0224b94410b3a5150939, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 094b3e454afe0224b94410b3a5150939, type: 3}
 --- !u!95 &657822943 stripped
@@ -7530,6 +7542,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3082778680805672007, guid: a94db41cb05ccef48a55ac02a81c144b, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3757932680068037404, guid: a94db41cb05ccef48a55ac02a81c144b, type: 3}
       propertyPath: playerParent
       value: 
@@ -8055,6 +8071,14 @@ PrefabInstance:
     - target: {fileID: 5785778763203460534, guid: 9106596e0d6dbbb4ab6a3ba437ffd359, type: 3}
       propertyPath: zone
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909233172601503011, guid: 9106596e0d6dbbb4ab6a3ba437ffd359, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091606092385151427, guid: 9106596e0d6dbbb4ab6a3ba437ffd359, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6127269834153356722, guid: 9106596e0d6dbbb4ab6a3ba437ffd359, type: 3}
       propertyPath: zone
