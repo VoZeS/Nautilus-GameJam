@@ -1,28 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86;
 
 public class InvisibleObject : MonoBehaviour
 {
     Material mat;
+    Color matStartColor;
     [SerializeField] int zone;
     [SerializeField] GameObject riftFuture;
     [SerializeField] GameObject riftMedieval;
     [SerializeField] GameObject riftEgipt;
     GameObject riftCurrent;
     Material riftMat;
-    [SerializeField] float riftStartAlpha;
+    float riftStartAlpha;
     [SerializeField] float fadeSpeed;
     [SerializeField] float errorFadeSpeed;
-    int state; // 0 --> none, 1 --> visible, 2 --> error
+    [SerializeField] int state; // 0 --> none, 1 --> visible, 2 --> error
 
     [SerializeField] CountPlayersOnCollider playersOnCollider;
 
     // Start is called before the first frame update
     void Start()
     {
-        mat = GetComponent<Renderer>().material;
-        mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 0.0f);
+        // object
+        GetComponent<Renderer>().material.SetFloat("_DisolveAmount", 0.0f);
+        Material instance = new Material(Shader.Find("Shader Graphs/DisolveShader"));
+        Material currentMat = GetComponent<Renderer>().material;
+        instance.CopyPropertiesFromMaterial(currentMat);
+        mat = GetComponent<Renderer>().material = instance;
+        matStartColor = mat.GetColor("_Color");
 
         gameObject.layer = LayerMask.NameToLayer("Invisible");
         state = 0;
@@ -31,10 +38,10 @@ public class InvisibleObject : MonoBehaviour
         if (zone == 0) riftCurrent = riftFuture;
         else if (zone == 1) riftCurrent = riftMedieval;
         else if (zone == 2) riftCurrent = riftEgipt;
-        Material instance = new Material(Shader.Find("Shader Graphs/RiftShader"));
-        Material currentMat = riftCurrent.GetComponent<Renderer>().material;
-        instance.CopyPropertiesFromMaterial(currentMat);
-        riftMat = riftCurrent.GetComponent<Renderer>().material = instance;
+        Material riftInstance = new Material(Shader.Find("Shader Graphs/RiftShader"));
+        Material riftCurrentMat = riftCurrent.GetComponent<Renderer>().material;
+        riftInstance.CopyPropertiesFromMaterial(riftCurrentMat);
+        riftMat = riftCurrent.GetComponent<Renderer>().material = riftInstance;
         riftStartAlpha = riftMat.GetFloat("_Alpha");
         riftCurrent.SetActive(true);
         riftCurrent.transform.localScale = new Vector3(0.3f / transform.lossyScale.x, 0.3f / transform.lossyScale.y, 0.3f / transform.lossyScale.z);
@@ -78,16 +85,15 @@ public class InvisibleObject : MonoBehaviour
 
     IEnumerator FadeInCoroutine()
     {
-        Color color = mat.color;
-        float alpha = mat.color.a;
-        while (alpha < 1.0f)
+        float disolveAmount = mat.GetFloat("_DisolveAmount");
+        while (disolveAmount < 1.0f)
         {
-            alpha += Time.deltaTime * fadeSpeed;
-            mat.color = new Color(color.r, color.g, color.b, alpha);
-            riftMat.SetFloat("_Alpha", (1 - alpha) * riftStartAlpha);
+            disolveAmount += Time.deltaTime * fadeSpeed;
+            mat.SetFloat("_DisolveAmount", disolveAmount);
+            riftMat.SetFloat("_Alpha", (1 - disolveAmount) * riftStartAlpha);
             yield return null;
         }
-        mat.color = new Color(color.r, color.g, color.b, 1.0f);
+        mat.SetFloat("_DisolveAmount", 1.0f);
         riftMat.SetFloat("_Alpha", 0.0f);
     }
 
@@ -99,47 +105,48 @@ public class InvisibleObject : MonoBehaviour
 
     IEnumerator FadeOutCoroutine()
     {
-        Color color = mat.color;
-        float alpha = mat.color.a;
-        while (alpha > 0.0f)
+        float disolveAmount = mat.GetFloat("_DisolveAmount");
+        while (disolveAmount > 0.0f)
         {
-            alpha -= Time.deltaTime * fadeSpeed;
-            mat.color = new Color(color.r, color.g, color.b, alpha);
-            riftMat.SetFloat("_Alpha", (1 - alpha) * riftStartAlpha);
+            disolveAmount -= Time.deltaTime * fadeSpeed;
+            mat.SetFloat("_DisolveAmount", disolveAmount);
+            riftMat.SetFloat("_Alpha", (1 - disolveAmount) * riftStartAlpha);
             yield return null;
         }
-        mat.color = new Color(color.r, color.g, color.b, 0.0f);
+        mat.SetFloat("_DisolveAmount", 0.0f);
         riftMat.SetFloat("_Alpha", riftStartAlpha);
         gameObject.layer = LayerMask.NameToLayer("Invisible");
         state = 0;
     }
-
     IEnumerator ErrorCoroutine()
     {
-        Color color = mat.color;
-        float alpha = mat.color.a;
+        Color aux = new Color(0.65f, 0, 0, 1);
+        mat.SetColor("_Color", aux);
+        float disolveAmount = mat.GetFloat("_DisolveAmount");
         for (int i = 0; i < 6; i++)
         {
             if (i % 2 == 0)
             {
-                while (alpha < 0.3f)
+                while (disolveAmount < 0.6f)
                 {
-                    alpha += Time.deltaTime * errorFadeSpeed;
-                    mat.color = new Color(1, 0, 0, alpha);
+                    disolveAmount += Time.deltaTime * errorFadeSpeed;
+                    mat.SetFloat("_DisolveAmount", disolveAmount);
                     yield return null;
                 }
             }
             else
             {
-                while (alpha > 0.0f)
+                while (disolveAmount > 0.0f)
                 {
-                    alpha -= Time.deltaTime * errorFadeSpeed;
-                    mat.color = new Color(1, 0, 0, alpha);
+                    disolveAmount -= Time.deltaTime * errorFadeSpeed;
+                    mat.SetFloat("_DisolveAmount", disolveAmount);
                     yield return null;
                 }
             }
         }
-        mat.color = new Color(color.r, color.g, color.b, 0.0f);
+        mat.SetFloat("_DisolveAmount", disolveAmount);
+        aux = new Color(matStartColor.r, matStartColor.g, matStartColor.b, matStartColor.a);
+        mat.SetColor("_Color", aux);
         state = 0;
     }
 }

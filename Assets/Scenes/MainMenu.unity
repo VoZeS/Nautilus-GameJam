@@ -14203,7 +14203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1116838079}
-  fadeGo: {fileID: 948789503}
+  fadeGo: {fileID: 1214265620}
   fadeExit: {fileID: 1090694452}
 --- !u!1 &1879443408
 GameObject:
@@ -15337,7 +15337,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1

@@ -209,7 +209,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b8bc3ee370bac0546b32a441f9d899d5, type: 2}
+  - {fileID: 2100000, guid: 1a03fbf3d55884a4882f3f421f338ce5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -261,7 +261,8 @@ MonoBehaviour:
   riftMedieval: {fileID: 3253866170425207381}
   riftEgipt: {fileID: 6740630755239648172}
   fadeSpeed: 1
-  errorFadeSpeed: 2
+  errorFadeSpeed: 4
+  state: 0
   playersOnCollider: {fileID: 6127269833188101729}
 --- !u!1 &6415208973034171697
 GameObject:
