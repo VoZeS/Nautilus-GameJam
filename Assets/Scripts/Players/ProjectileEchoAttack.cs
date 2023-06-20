@@ -22,7 +22,7 @@ public class ProjectileEchoAttack : MonoBehaviour
     [SerializeField] float upgradeCooldown = 1.5f;
 
     [SerializeField] AudioSource attack_audioSource;
-    [SerializeField] AudioClip scream1;
+    
     [SerializeField] AudioClip scream2;
 
     // Start is called before the first frame update
@@ -96,7 +96,7 @@ public class ProjectileEchoAttack : MonoBehaviour
         switch (rand)
         {
             case 0:
-                attack_audioSource.clip = scream1;
+                attack_audioSource.clip = scream2;
             break;
             case 1:
                 attack_audioSource.clip = scream2;
