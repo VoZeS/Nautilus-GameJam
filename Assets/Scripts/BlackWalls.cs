@@ -18,11 +18,11 @@ public class BlackWalls : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playersOnZone++;
-            if (playersOnZone == 1) container.SetActive(false);
+            if (playersOnZone == 1) CallAllChilds(container, false);
             else if (playersOnZone == 2)
             {
-                if (prevContainer) prevContainer.SetActive(true);
-                if (nextContainer) nextContainer.SetActive(true);
+                if (prevContainer) CallAllChilds(prevContainer, true);
+                if (nextContainer) CallAllChilds(nextContainer, true);
                 if (nextLevel) nextLevel.SetActive(true);
                 if (nextNextLevel) nextNextLevel.SetActive(false);
                 if (prevLevel) prevLevel.SetActive(true);
@@ -36,6 +36,15 @@ public class BlackWalls : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playersOnZone--;
+        }
+    }
+
+    void CallAllChilds(GameObject container, bool fadeIn)
+    {
+        for (int i = 0; i < container.transform.childCount; i++)
+        {
+            if (fadeIn) container.transform.GetChild(i).GetComponent<BlackWallFade>().FadeIn();
+            else container.transform.GetChild(i).GetComponent<BlackWallFade>().FadeOut();
         }
     }
 }

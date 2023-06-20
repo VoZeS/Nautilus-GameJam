@@ -36,7 +36,7 @@ public class Key : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, attachedTo.transform.position, followSpeed * Time.deltaTime);
 
-        if (isDoor && Vector3.Distance(transform.position, attachedTo.transform.position) < 0.05f)
+        if (isDoor && Vector3.Distance(transform.position, attachedTo.transform.position) < 0.5f)
         {
             attachedTo.transform.parent.GetComponent<KeyDoor>().KeyOn();
             gameObject.SetActive(false);

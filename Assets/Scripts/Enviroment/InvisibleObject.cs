@@ -118,6 +118,7 @@ public class InvisibleObject : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Invisible");
         state = 0;
     }
+
     IEnumerator ErrorCoroutine()
     {
         Color aux = new Color(0.65f, 0, 0, 1);

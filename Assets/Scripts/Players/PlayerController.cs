@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     bool jumpInput = false;
     bool jumping = false;
     [SerializeField][Range(0.0f, 1.0f)] float airMovementSpeed = 0.2f;
-    [SerializeField] float airMovementIncrement = 1.0f;
 
     [Header("Ground")]
     [NonEditable][SerializeField] bool onGround;
