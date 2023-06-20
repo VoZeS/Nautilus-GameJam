@@ -12,7 +12,7 @@ public class ElevatorLogic : MonoBehaviour
     public GameObject realElevator;
     public LeverLogic lever;
 
-    private bool going = true;
+    public bool going = true;
 
     [SerializeField] Transform playerParent;
 
