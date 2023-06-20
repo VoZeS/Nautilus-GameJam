@@ -88,49 +88,60 @@ public class PlayerController : MonoBehaviour
 
         rb.angularVelocity = new Vector3(0, 0, 0);
 
-        onGround = Physics.BoxCast(transform.position, groundBoxSize / 2.0f, Vector3.down, Quaternion.identity, groundBoxDistance, groundLayerMask);
-
-        if (onGround)
+        if(!cutsceneOn)
         {
-            if (!onGroundLastFrame) animator.SetTrigger("OnGround");
-            else animator.ResetTrigger("OnGround");
+            onGround = Physics.BoxCast(transform.position, groundBoxSize / 2.0f, Vector3.down, Quaternion.identity, groundBoxDistance, groundLayerMask);
 
-            // rotation
-            if (lookingRight && movementInput < 0 && rotationDirection != -1)
+            if (onGround)
             {
-                StopAllCoroutines();
-                StartCoroutine("RotateToLeft");
+                if (!onGroundLastFrame) animator.SetTrigger("OnGround");
+                else animator.ResetTrigger("OnGround");
+
+                // rotation
+                if (lookingRight && movementInput < 0 && rotationDirection != -1)
+                {
+                    StopAllCoroutines();
+                    StartCoroutine("RotateToLeft");
+                }
+                else if (!lookingRight && movementInput > 0 && rotationDirection != 1)
+                {
+                    StopAllCoroutines();
+                    StartCoroutine("RotateToRight");
+                }
+
+                animator.SetBool("IsRotating", rotationDirection != 0);
+
+                // movement
+                rb.velocity = new Vector3(movementInput * speed, rb.velocity.y, 0);
+
+                // jump
+                if (jumpInput && !jumping)
+                {
+                    rb.velocity = new Vector3(rb.velocity.x * speed, 0, 0);
+                    rb.AddForce(new Vector3(0, jumpForce, 0));
+                    jumping = true;
+                    animator.SetTrigger("Jump");
+                    Invoke("JumpDone", 0.1f);
+                }
             }
-            else if (!lookingRight && movementInput > 0 && rotationDirection != 1)
+            else
             {
-                StopAllCoroutines();
-                StartCoroutine("RotateToRight");
+                rb.velocity = new Vector3(movementInput * speed * airMovementSpeed, rb.velocity.y, 0);
             }
 
-            animator.SetBool("IsRotating", rotationDirection != 0);
+            animator.SetFloat("Speed", rb.velocity.x);
+            animator.SetFloat("Vertical_Speed", rb.velocity.y);
 
-            // movement
-            rb.velocity = new Vector3(movementInput * speed, rb.velocity.y, 0);
-
-            // jump
-            if (jumpInput && !jumping)
-            {
-                rb.velocity = new Vector3(rb.velocity.x * speed, 0, 0);
-                rb.AddForce(new Vector3(0, jumpForce, 0));
-                jumping = true;
-                animator.SetTrigger("Jump");
-                Invoke("JumpDone", 0.1f);
-            }
+            onGroundLastFrame = onGround;
         }
         else
         {
-            rb.velocity = new Vector3(movementInput * speed * airMovementSpeed, rb.velocity.y, 0);
+            // movement
+            rb.velocity = new Vector3(0, 0, 0);
+
+            animator.SetTrigger("Cutscene");
         }
-
-        animator.SetFloat("Speed", rb.velocity.x);
-        animator.SetFloat("Vertical_Speed", rb.velocity.y);
-
-        onGroundLastFrame = onGround;
+        
     }
 
     private void OnCollisionEnter(Collision collision)

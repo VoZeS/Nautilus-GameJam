@@ -20,6 +20,7 @@ TagManager:
   - Level4
   - Level5
   - Level2.5
+  - CutsceneTrigger
   layers:
   - Default
   - TransparentFX

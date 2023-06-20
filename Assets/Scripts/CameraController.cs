@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [Header("Players")]
     public Transform playerOne;
     public Transform playerTwo;
 
+    [Header("Follow Logic")]
     public Vector3 offset;
     public float smoothSpeed = 0.2f;
     public float magnitude = 2.0f;
@@ -16,13 +18,22 @@ public class CameraController : MonoBehaviour
 
     private Vector3 distancePlayers;
 
+    [Header("Actual Level")]
     //public LevelVolume levelVolume;
     public float levelInd;
+
+    [Header("Final Cutscene")]
+    public Transform cameraPosition;
+    public float smoothSpeedCutscene = 0.2f;
+
+    public GameObject HUD;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(CameraStartDelay());
+
+        HUD.SetActive(true);
     }
 
     // Update is called once per frame
@@ -62,7 +73,7 @@ public class CameraController : MonoBehaviour
                 break;
         }
 
-        if (playerOne != null && playerTwo != null)
+        if (playerOne != null && playerTwo != null && !PlayerController.cutsceneOn)
         {
             // Zoom Out Camera
             distancePlayers = playerOne.transform.position - playerTwo.transform.position;
@@ -75,6 +86,18 @@ public class CameraController : MonoBehaviour
             transform.position = smoothedPostion;
             gizmosPos = FindCentroid();
 
+        }
+        else if(PlayerController.cutsceneOn)
+        {
+            Vector3 desiredPosition = cameraPosition.position;
+            Quaternion desiredRotation = cameraPosition.rotation;
+
+            Vector3 smoothedPostion = Vector3.Lerp(transform.position, desiredPosition, smoothSpeedCutscene * Time.deltaTime);
+            Quaternion smoothedRotation = Quaternion.Slerp(transform.rotation, desiredRotation, smoothSpeedCutscene * Time.deltaTime);
+            transform.position = smoothedPostion;
+            transform.rotation = smoothedRotation;
+
+            HUD.SetActive(false);
         }
     }
 
