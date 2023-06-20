@@ -89,6 +89,8 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
+    - _DisolveAmount: 0.521
+    - _DisolveNoise: 30
     - _Displacement: 0.2
     - _DistorsionStrenght: 0.5
     - _DstBlend: 0

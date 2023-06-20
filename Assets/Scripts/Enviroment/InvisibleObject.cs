@@ -25,7 +25,7 @@ public class InvisibleObject : MonoBehaviour
     {
         // object
         GetComponent<Renderer>().material.SetFloat("_DisolveAmount", 0.0f);
-        Material instance = new Material(Shader.Find("Shader Graphs/DisolveShader"));
+        Material instance = new Material(Shader.Find("Shader Graphs/RiftShaderFront"));
         Material currentMat = GetComponent<Renderer>().material;
         instance.CopyPropertiesFromMaterial(currentMat);
         mat = GetComponent<Renderer>().material = instance;
