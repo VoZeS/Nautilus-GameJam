@@ -41,32 +41,29 @@ public class UiManager : MonoBehaviour
     void Update()
     {
 
-        switch (levelind)
+        switch (levelInd)
         {
             case 1:
-                setnumber(3000);
+                SetNumber(3000);
                 break;
 
             case 2:
-                setnumber(1600);
+                SetNumber(1600);
                 break;
 
             case 3:
-                setnumber(500);
+                SetNumber(500);
                 break;
 
             case 4:
-                setnumber(1600);
+                SetNumber(1600);
                 break;
 
             case 5:
-                setnumber(3000);
+                SetNumber(3000);
                 break;
 
         }
-
-
-
 
         if (currentNumb != desiredNumb)
         {

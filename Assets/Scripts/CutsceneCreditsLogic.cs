@@ -19,6 +19,7 @@ public class CutsceneCreditsLogic : MonoBehaviour
 
     private float alphaOn;
     private float alphaOff;
+    private float alphaYearPanelOff;
 
     private float timer;
 
@@ -30,6 +31,7 @@ public class CutsceneCreditsLogic : MonoBehaviour
     {
         alphaOn = 0.0f;
         alphaOff = 1.0f;
+        alphaYearPanelOff = 0.5f;
 
         timer = 0.0f;
     }
@@ -45,9 +47,12 @@ public class CutsceneCreditsLogic : MonoBehaviour
             if (alphaOff >= 0.0f)
                 alphaOff -= 0.01f;
 
+            if (alphaYearPanelOff >= 0.0f)
+                alphaYearPanelOff -= 0.01f;
+
             timer += Time.deltaTime;
 
-            if(timer >= 15.0f)
+            if(timer >= 16.0f)
                 fadeIn.SetActive(true);
         }
 
@@ -59,6 +64,6 @@ public class CutsceneCreditsLogic : MonoBehaviour
         years.color = new Color(years.color.r, years.color.g, years.color.b, alphaOff);
         guitar.color = new Color(guitar.color.r, guitar.color.g, guitar.color.b, alphaOff);
         micro.color = new Color(micro.color.r, micro.color.g, micro.color.b, alphaOff);
-        panel.color = new Color(panel.color.r, panel.color.g, panel.color.b, alphaOff);
+        panel.color = new Color(panel.color.r, panel.color.g, panel.color.b, alphaYearPanelOff);
     }
 }
