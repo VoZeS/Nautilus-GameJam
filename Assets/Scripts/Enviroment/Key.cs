@@ -65,6 +65,9 @@ public class Key : MonoBehaviour
 
     public void RespawnKey()
     {
+        attachedTo = null;
+        GetComponent<Collider>().enabled = true;
+        rb.useGravity = true;
         transform.position = respawnTransform.position;
         rb.velocity = Vector3.zero;
     }
