@@ -32,6 +32,12 @@ public class PauseMenu : MonoBehaviour
 
     // audio
     public AudioMixer audioMixer;
+    public Slider masterSlider;
+    public Slider musicSlider;
+    public Slider fxSlider;
+    float masterVolume;
+    float musicVolume;
+    float fxVolume;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +54,16 @@ public class PauseMenu : MonoBehaviour
 
         noHorizontalInputLastFrame = true;
         onError = false;
+
+        masterVolume = PlayerPrefs.GetInt("MasterVolume", -100);
+        if (masterVolume == -100) audioMixer.GetFloat("MasterVolume", out masterVolume);
+        masterSlider.value = masterVolume / 10.0f;
+        musicVolume = PlayerPrefs.GetInt("MusicVolume", -100);
+        if (musicVolume == -100) audioMixer.GetFloat("MusicVolume", out musicVolume);
+        musicSlider.value = musicVolume / 10.0f;
+        fxVolume = PlayerPrefs.GetInt("FxVolume", -100); ;
+        if (fxVolume == -100) audioMixer.GetFloat("FxVolume", out fxVolume);
+        fxSlider.value = fxVolume / 10.0f;
     }
 
     // Update is called once per frame
@@ -75,6 +91,9 @@ public class PauseMenu : MonoBehaviour
                 PlayerPrefs.SetInt("Vsync", (vsync ? 1 : 0));
                 PlayerPrefs.SetInt("ControllerType1", controllerType1);
                 PlayerPrefs.SetInt("ControllerType2", controllerType2);
+                PlayerPrefs.SetInt("MasterVolume", (int)masterVolume);
+                PlayerPrefs.SetInt("MusicVolume", (int)musicVolume);
+                PlayerPrefs.SetInt("FxVolume", (int)fxVolume);
                 ManagePause.instance.PauseGame(false);
             }
         }
@@ -213,16 +232,19 @@ public class PauseMenu : MonoBehaviour
     public void SetMasterVolume(float volume)
     {
         audioMixer.SetFloat("MasterVolume", volume * 10.0f);
+        masterVolume = volume * 10.0f;
     }
 
     public void SetMusicVolume(float volume)
     {
         audioMixer.SetFloat("MusicVolume", volume * 10.0f);
+        musicVolume = volume * 10.0f;
     }
 
     public void SetFxVolume(float volume)
     {
         audioMixer.SetFloat("FxVolume", volume * 10.0f);
+        fxVolume = volume * 10.0f;
     }
 
     public void ExitGame()

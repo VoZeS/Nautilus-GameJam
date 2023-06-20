@@ -12041,6 +12041,9 @@ MonoBehaviour:
   errorWASD: {fileID: 4241756024783286537}
   errorARROWS: {fileID: 4241756024150534107}
   audioMixer: {fileID: 24100000, guid: 5f5ab65e01eda444c8aeae92d26a31f7, type: 2}
+  masterSlider: {fileID: 4241756023919467633}
+  musicSlider: {fileID: 4241756024538142397}
+  fxSlider: {fileID: 4241756023172441315}
 --- !u!222 &4241756023425422670
 CanvasRenderer:
   m_ObjectHideFlags: 0

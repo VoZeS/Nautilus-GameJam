@@ -42,7 +42,7 @@ public class FadeIntroLogic : MonoBehaviour
             alpha2 += 0.005f;
 
         if(timer >= 25.0f)
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
 
         // Fill Slider
         slider.value = Mathf.Lerp(slider.minValue, slider.maxValue, timer / 25.0f);
