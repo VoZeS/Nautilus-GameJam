@@ -13,6 +13,7 @@ public class UiManager : MonoBehaviour
     public GameObject guitar;
     private string aCrist = " AC";
     private DetectorEchoAttack detectorEchoAttack;
+    private ProjectileEchoAttack projectileEchoAttack;
     public int levelInd;
     private bool inL1 = true;
     private bool inL2 = false;
@@ -40,6 +41,7 @@ public class UiManager : MonoBehaviour
     void Start()
     {
         detectorEchoAttack = GameObject.Find("PlayerBoy").GetComponent<DetectorEchoAttack>();
+        projectileEchoAttack = GameObject.Find("PlayerGirl").GetComponent<ProjectileEchoAttack>();
 
         animationTime = 1f;
         initialNumb = 3000;
@@ -152,15 +154,23 @@ public class UiManager : MonoBehaviour
             guitar.SetActive(true);
             
         }
-            
-
         else
         {
             guitar.SetActive(false);
         }
-            
 
-        
+        if (projectileEchoAttack.echoReady)
+        {
+            microphone.SetActive(true);
+
+        }
+        else
+        {
+            microphone.SetActive(false);
+        }
+
+
+
 
     }
     

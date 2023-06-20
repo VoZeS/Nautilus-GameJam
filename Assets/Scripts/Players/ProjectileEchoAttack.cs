@@ -12,7 +12,7 @@ public class ProjectileEchoAttack : MonoBehaviour
     PlayerController playerController;
 
     bool echoInput;
-    bool echoReady;
+    public bool echoReady;
     bool aimingUp;
 
     Vector3 direction;
