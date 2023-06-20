@@ -9,6 +9,7 @@ public class FadeInDisolve : MonoBehaviour
     [SerializeField] float disolveSpeed;
     float disolveAmount;
     
+    public int goToScene;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class FadeInDisolve : MonoBehaviour
     {
         if (disolveAmount >= 1.0f)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(goToScene);
         }
 
         disolveAmount += disolveSpeed * Time.deltaTime;

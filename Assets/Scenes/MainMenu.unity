@@ -8446,6 +8446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: 84374a5437233c44f9f3beb30953de48, type: 2}
   disolveSpeed: 1
+  goToScene: 1
 --- !u!114 &1214265623
 MonoBehaviour:
   m_ObjectHideFlags: 0

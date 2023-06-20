@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class CameraController : MonoBehaviour
 {
@@ -26,14 +28,10 @@ public class CameraController : MonoBehaviour
     public Transform cameraPosition;
     public float smoothSpeedCutscene = 0.2f;
 
-    public GameObject HUD;
-
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(CameraStartDelay());
-
-        HUD.SetActive(true);
     }
 
     // Update is called once per frame
@@ -96,8 +94,6 @@ public class CameraController : MonoBehaviour
             Quaternion smoothedRotation = Quaternion.Slerp(transform.rotation, desiredRotation, smoothSpeedCutscene * Time.deltaTime);
             transform.position = smoothedPostion;
             transform.rotation = smoothedRotation;
-
-            HUD.SetActive(false);
         }
     }
 
