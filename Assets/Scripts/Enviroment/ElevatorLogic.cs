@@ -14,6 +14,8 @@ public class ElevatorLogic : MonoBehaviour
 
     private bool going = true;
 
+    [SerializeField] Transform playerParent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,14 +35,14 @@ public class ElevatorLogic : MonoBehaviour
             if (going)
             {
                 Vector3 direction = finalPosition.transform.position - initialPosition.transform.position;
-                gameObject.transform.position += direction * velocity / 100;
-                realElevator.transform.position += direction * velocity / 100;
+                gameObject.transform.position += direction * 60 * Time.deltaTime * velocity / 100 ;
+                realElevator.transform.position += direction * 60 * Time.deltaTime * velocity / 100 ;
             }
             else if (!going)
             {
                 Vector3 direction = initialPosition.transform.position - finalPosition.transform.position;
-                gameObject.transform.position += direction * velocity / 100;
-                realElevator.transform.position += direction * velocity / 100;
+                gameObject.transform.position += direction * 60 * Time.deltaTime * velocity / 100 ;
+                realElevator.transform.position += direction * 60 * Time.deltaTime * velocity / 100;
 
             }
         }
@@ -49,8 +51,25 @@ public class ElevatorLogic : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "ElevatorCollider")
+        if (other.gameObject.CompareTag("ElevatorCollider"))
+        {
             going = !going;
+        }
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(playerParent);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null);
+        }
     }
 }

@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
         rb.angularVelocity = new Vector3(0, 0, 0);
 
-        if(!cutsceneOn)
+        if (!cutsceneOn)
         {
             onGround = Physics.BoxCast(transform.position, groundBoxSize / 2.0f, Vector3.down, Quaternion.identity, groundBoxDistance, groundLayerMask);
 

@@ -13,6 +13,8 @@ public class AutomaticElevatorLogic : MonoBehaviour
 
     private bool going = true;
 
+    [SerializeField] Transform playerParent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,26 +24,24 @@ public class AutomaticElevatorLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            if (going)
-            {
+        if (going)
+        {
             if (!m_AudioSource.isPlaying)
             {
                 m_AudioSource.Play();
-            } 
-                Vector3 direction = finalPosition.transform.position - initialPosition.transform.position;
-                gameObject.transform.position += direction * velocity / 100;
-                realElevator.transform.position += direction * velocity / 100;
             }
-            else if (!going)
-            {
-                //m_AudioSource.Play();
-                Vector3 direction = initialPosition.transform.position - finalPosition.transform.position;
-                gameObject.transform.position += direction * velocity / 100;
-                realElevator.transform.position += direction * velocity / 100;
+            Vector3 direction = finalPosition.transform.position - initialPosition.transform.position;
+            gameObject.transform.position += direction * 60 * Time.deltaTime * velocity / 100;
+            realElevator.transform.position += direction * 60 * Time.deltaTime * velocity / 100;
+        }
+        else if (!going)
+        {
+            //m_AudioSource.Play();
+            Vector3 direction = initialPosition.transform.position - finalPosition.transform.position;
+            gameObject.transform.position += direction * 60 * Time.deltaTime * velocity / 100;
+            realElevator.transform.position += direction * 60 * Time.deltaTime * velocity / 100;
 
-            }
-        
-
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,5 +49,21 @@ public class AutomaticElevatorLogic : MonoBehaviour
         if (other.tag == "ElevatorCollider")
             going = !going;
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(playerParent);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null);
+        }
     }
 }
