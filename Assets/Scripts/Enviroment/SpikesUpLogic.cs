@@ -10,7 +10,16 @@ public class SpikesUpLogic : MonoBehaviour
     public Transform finalPosition;
     public bool end;
 
+    public GameObject elevatorColl;
+    public GameObject elevatorRB;
+    public GameObject realElevator;
+    public Transform elevatorInitialPosition;
+    public Transform elevatorRBInitialPosition;
+    public Transform elevatorRealInitialPosition;
+
     public StartSpikesLogic startLogic;
+    public LeverLogic leverLogic;
+    public ElevatorLogic elevatorLogic;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +49,14 @@ public class SpikesUpLogic : MonoBehaviour
     public void FadeInFinish()
     {
         end = false;
+        startLogic.start = false;
+        leverLogic.isLeverActivated = false;
+        leverLogic.animatorLever.SetBool("isActivated", false);
+        elevatorLogic.going = true;
+
+        realElevator.transform.position = elevatorRealInitialPosition.position;
+        elevatorRB.transform.position = elevatorRBInitialPosition.position;
+        elevatorColl.transform.position = elevatorInitialPosition.position;
 
         gameObject.transform.position = initialPosition.position;
     }
