@@ -38,8 +38,12 @@ public class PlayerController : MonoBehaviour
     [Header("KeyAttached")]
     [NonEditable] public Key keyAttached;
 
+    public static bool cutsceneOn = false;
+
     private void Start()
     {
+        cutsceneOn = false;
+
         // controller
         if (player1)
         {
@@ -151,6 +155,12 @@ public class PlayerController : MonoBehaviour
         if (onGround) rb.AddForce(new Vector3(0, jumpForce, 0));
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("CutsceneTrigger"))
+            cutsceneOn = true;
+    }
+
     IEnumerator RotateToRight()
     {
         lookingRight = true;
@@ -201,4 +211,6 @@ public class PlayerController : MonoBehaviour
             Gizmos.DrawWireCube(transform.position - transform.up * groundBoxDistance, groundBoxSize);
         }
     }
+
+    
 }

@@ -92,7 +92,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Addition: 0.05
-    - _Alpha: 0.03
+    - _Alpha: 0.1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1

@@ -6,6 +6,7 @@ public class SpikesUpLogic : MonoBehaviour
 {
     public AudioSource audioSource;
     public float velocity;
+    public Transform initialPosition;
     public Transform finalPosition;
     public bool end;
 
@@ -24,7 +25,7 @@ public class SpikesUpLogic : MonoBehaviour
         if(!end && startLogic.start)
         {
             audioSource.Play();
-            Vector3 direction = finalPosition.transform.position - gameObject.transform.position;
+            Vector3 direction = finalPosition.transform.position - initialPosition.transform.position;
             gameObject.transform.position += direction * velocity / 100;
         }
 
@@ -34,5 +35,12 @@ public class SpikesUpLogic : MonoBehaviour
     {
         if (other.tag == "SpikesTrigger")
             end = true;
+    }
+
+    public void FadeInFinish()
+    {
+        end = false;
+
+        gameObject.transform.position = initialPosition.position;
     }
 }
