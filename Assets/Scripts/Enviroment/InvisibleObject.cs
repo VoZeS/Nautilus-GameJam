@@ -5,6 +5,11 @@ using UnityEngine;
 public class InvisibleObject : MonoBehaviour
 {
     Material mat;
+    [SerializeField] int zone;
+    [SerializeField] GameObject riftFuture;
+    [SerializeField] GameObject riftMedieval;
+    [SerializeField] GameObject riftEgipt;
+    GameObject riftCurrent;
     [SerializeField] float fadeSpeed;
     [SerializeField] float errorFadeSpeed;
     int state; // 0 --> none, 1 --> visible, 2 --> error
@@ -19,6 +24,11 @@ public class InvisibleObject : MonoBehaviour
 
         gameObject.layer = LayerMask.NameToLayer("Invisible");
         state = 0;
+        if (zone == 0) riftCurrent = riftFuture;
+        else if (zone == 1) riftCurrent = riftMedieval;
+        else if (zone == 2) riftCurrent = riftEgipt;
+        riftCurrent.SetActive(true);
+        riftCurrent.transform.localScale = new Vector3(0.3f / transform.lossyScale.x, 0.3f / transform.lossyScale.y, 0.3f / transform.lossyScale.z);
     }
 
     // Update is called once per frame
@@ -48,6 +58,7 @@ public class InvisibleObject : MonoBehaviour
             }
             else
             {
+                riftCurrent.SetActive(false);
                 state = 1;
                 StopAllCoroutines();
                 StartCoroutine("FadeInCoroutine");
@@ -89,6 +100,7 @@ public class InvisibleObject : MonoBehaviour
         mat.color = new Color(color.r, color.g, color.b, 0.0f);
         gameObject.layer = LayerMask.NameToLayer("Invisible");
         state = 0;
+        riftCurrent.SetActive(true);
     }
 
     IEnumerator ErrorCoroutine()

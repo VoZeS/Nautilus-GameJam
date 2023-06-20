@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] InitialScreenManager manager;
     [SerializeField] GameObject fadeGo;
+    [SerializeField] GameObject fadeExit;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class MainMenu : MonoBehaviour
 
     public void Exit()
     {
-        Application.Quit();
+        manager.CloseAllMenus();
+        fadeExit.SetActive(true);
     }
 }
