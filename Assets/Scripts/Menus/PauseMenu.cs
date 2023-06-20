@@ -39,6 +39,9 @@ public class PauseMenu : MonoBehaviour
     float musicVolume;
     float fxVolume;
 
+    [SerializeField] AudioSource accept;
+    [SerializeField] AudioSource error;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,9 +79,12 @@ public class PauseMenu : MonoBehaviour
                 if (controllerType1 == 0) errorText = errorWASD.GetComponent<TextMeshProUGUI>();
                 else if (controllerType1 == 1) errorText = errorARROWS.GetComponent<TextMeshProUGUI>();
                 if (!onError) StartCoroutine("ErrorCoroutine");
+
+                error.Play();
             }
             else
             {
+                accept.Play();
                 gameObject.SetActive(false);
                 if (onError)
                 {
@@ -106,6 +112,10 @@ public class PauseMenu : MonoBehaviour
             {
                 if (input > 0) IncreaseController(true);
                 else if (input < 0) DecreaseController(true);
+                if (input != 0)
+                {
+                    accept.Play();
+                }
             }
         }
         else if (EventSystem.current.currentSelectedGameObject == buttonControllerType2)
@@ -114,6 +124,10 @@ public class PauseMenu : MonoBehaviour
             {
                 if (input > 0) IncreaseController(false);
                 else if (input < 0) DecreaseController(false);
+                if (input != 0)
+                {
+                    accept.Play();
+                }
             }
         }
 
