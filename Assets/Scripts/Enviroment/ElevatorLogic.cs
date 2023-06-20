@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ElevatorLogic : MonoBehaviour
 {
+    AudioSource audioSource;
     public float velocity;
     public Transform initialPosition;
     public Transform finalPosition;
@@ -16,7 +17,7 @@ public class ElevatorLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -24,6 +25,11 @@ public class ElevatorLogic : MonoBehaviour
     {
         if(lever.isLeverActivated)
         {
+            if(!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+
             if (going)
             {
                 Vector3 direction = finalPosition.transform.position - initialPosition.transform.position;
@@ -38,7 +44,7 @@ public class ElevatorLogic : MonoBehaviour
 
             }
         }
-       
+        audioSource.Stop();
     }
 
     private void OnTriggerEnter(Collider other)

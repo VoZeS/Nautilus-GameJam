@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AutomaticElevatorLogic : MonoBehaviour
 {
+    AudioSource m_AudioSource;
     public float velocity;
     public Transform initialPosition;
     public Transform finalPosition;
@@ -15,7 +16,7 @@ public class AutomaticElevatorLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -23,12 +24,17 @@ public class AutomaticElevatorLogic : MonoBehaviour
     {
             if (going)
             {
+            if (!m_AudioSource.isPlaying)
+            {
+                m_AudioSource.Play();
+            } 
                 Vector3 direction = finalPosition.transform.position - initialPosition.transform.position;
                 gameObject.transform.position += direction * velocity / 100;
                 realElevator.transform.position += direction * velocity / 100;
             }
             else if (!going)
             {
+                //m_AudioSource.Play();
                 Vector3 direction = initialPosition.transform.position - finalPosition.transform.position;
                 gameObject.transform.position += direction * velocity / 100;
                 realElevator.transform.position += direction * velocity / 100;

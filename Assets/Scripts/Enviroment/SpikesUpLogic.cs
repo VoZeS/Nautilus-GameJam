@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpikesUpLogic : MonoBehaviour
 {
+    public AudioSource audioSource;
     public float velocity;
     public Transform finalPosition;
     public bool end;
@@ -13,6 +14,7 @@ public class SpikesUpLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         end = false;
     }
 
@@ -21,6 +23,7 @@ public class SpikesUpLogic : MonoBehaviour
     {
         if(!end && startLogic.start)
         {
+            audioSource.Play();
             Vector3 direction = finalPosition.transform.position - gameObject.transform.position;
             gameObject.transform.position += direction * velocity / 100;
         }
