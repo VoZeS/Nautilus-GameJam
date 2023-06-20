@@ -8,6 +8,11 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] AudioSource movement_audiosource;
+    [SerializeField] AudioClip walk;
+    [SerializeField] AudioClip landing;
+
+
     [SerializeField] bool player1;
 
     [Header("Movement")]
@@ -121,6 +126,9 @@ public class PlayerController : MonoBehaviour
                     jumping = true;
                     animator.SetTrigger("Jump");
                     Invoke("JumpDone", 0.1f);
+                    movement_audiosource.clip = landing;
+                    movement_audiosource.Play();
+
                 }
             }
             else

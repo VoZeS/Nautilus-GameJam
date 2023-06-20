@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckPoint : MonoBehaviour
+public class timetravel : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    
+    AudioSource m_AudioSource;
+    bool isPlaying = false;
     void Start()
     {
-        GetComponent<MeshRenderer>().enabled = false;
-        
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -22,8 +21,13 @@ public class CheckPoint : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            
-            RespawnManager.instance.SetCurrentSpawn(gameObject);
+
+            if (!m_AudioSource.isPlaying && !isPlaying)
+            {
+                m_AudioSource.Play();
+
+                isPlaying = true;
+            }
         }
     }
 }

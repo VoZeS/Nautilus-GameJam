@@ -21,10 +21,15 @@ public class ProjectileEchoAttack : MonoBehaviour
     [SerializeField] float cooldown = 2.0f;
     [SerializeField] float upgradeCooldown = 1.5f;
 
+    [SerializeField] AudioSource attack_audioSource;
+    [SerializeField] AudioClip scream1;
+    [SerializeField] AudioClip scream2;
+
     // Start is called before the first frame update
     void Start()
     {
         playerController = GetComponent<PlayerController>();
+       
         echoReady = true;
 
         upgraded = false;
@@ -37,6 +42,9 @@ public class ProjectileEchoAttack : MonoBehaviour
 
         if (echoInput && echoReady)
         {
+
+            Invoke("PlayScream", 0.2f);
+
             if (aimingUp)
             {
                 direction = new Vector3(0, 0, 90);
@@ -79,5 +87,21 @@ public class ProjectileEchoAttack : MonoBehaviour
     public void Upgrade()
     {
         upgraded = true;
+    }
+
+    void PlayScream()
+    {
+        int rand = Random.Range(0, 2);
+
+        switch (rand)
+        {
+            case 0:
+                attack_audioSource.clip = scream1;
+            break;
+            case 1:
+                attack_audioSource.clip = scream2;
+            break;
+        }
+        attack_audioSource.Play();
     }
 }

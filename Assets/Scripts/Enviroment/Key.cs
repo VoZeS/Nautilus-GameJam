@@ -18,8 +18,6 @@ public class Key : MonoBehaviour
     [SerializeField] float followSpeed;
     [SerializeField] Transform respawnTransform;
 
-    public AudioClip grab;
-    public AudioClip insert;
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +58,6 @@ public class Key : MonoBehaviour
             GetComponent<Collider>().enabled = false;
             rb.useGravity = false;
 
-            audioSource.clip = grab;
             audioSource.Play();
         }
     }
@@ -72,8 +69,6 @@ public class Key : MonoBehaviour
         isDoor = true;
         followSpeed = followSpeed * 5.0f;
 
-        audioSource.clip = insert;
-        audioSource.Play();
     }
 
     public void RespawnKey()

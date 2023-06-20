@@ -9,12 +9,14 @@ public class FallingFloor : MonoBehaviour
     [SerializeField] float speed;
     [NonEditable][SerializeField] int playersOnZone;
     bool triggered;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         playersOnZone = 0;
         triggered = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class FallingFloor : MonoBehaviour
         if (Vector3.Distance(transform.position, endTransform.position) > 0.1f)
         {
             transform.position = (endTransform.position - transform.position).normalized * speed;
+            audioSource.Play();
         }
     }
 
