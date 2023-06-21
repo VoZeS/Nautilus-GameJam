@@ -9,8 +9,10 @@ public class UiManager : MonoBehaviour
     public TMP_Text yearsText;
     public float years;
     
-    public GameObject microphone;
-    public GameObject guitar;
+    public GameObject microphoneON;
+    public GameObject microphoneOFF;
+    public GameObject guitarON;
+    public GameObject guitarOFF;
     private string aCrist = " AC";
     private DetectorEchoAttack detectorEchoAttack;
     private ProjectileEchoAttack projectileEchoAttack;
@@ -151,22 +153,25 @@ public class UiManager : MonoBehaviour
 
         if (detectorEchoAttack.echoReady)
         {
-            guitar.SetActive(true);
-            
+            guitarON.SetActive(true);
+            guitarOFF.SetActive(false);
         }
         else
         {
-            guitar.SetActive(false);
+            guitarON.SetActive(false);
+            guitarOFF.SetActive(true);
         }
 
         if (projectileEchoAttack.echoReady)
         {
-            microphone.SetActive(true);
+            microphoneON.SetActive(true);
+            microphoneOFF.SetActive(false);
 
         }
         else
         {
-            microphone.SetActive(false);
+            microphoneON.SetActive(false);
+            microphoneOFF.SetActive(true);
         }
 
 
