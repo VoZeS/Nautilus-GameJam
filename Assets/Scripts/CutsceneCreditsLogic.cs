@@ -26,12 +26,17 @@ public class CutsceneCreditsLogic : MonoBehaviour
     [Header("Fade")]
     public GameObject fadeIn;
 
+    [Header("Audio")]
+    public AudioSource sourceFinalMusic;
+    private bool audioOn;
+
     // Start is called before the first frame update
     void Start()
     {
         alphaOn = 0.0f;
         alphaOff = 1.0f;
         alphaYearPanelOff = 0.5f;
+        audioOn = false;
 
         timer = 0.0f;
     }
@@ -54,6 +59,12 @@ public class CutsceneCreditsLogic : MonoBehaviour
 
             if(timer >= 16.0f)
                 fadeIn.SetActive(true);
+
+            if (!audioOn)
+            {
+                sourceFinalMusic.Play();
+                audioOn = true;
+            }
         }
 
         title.color = new Color(title.color.r, title.color.g, title.color.b, alphaOn);
