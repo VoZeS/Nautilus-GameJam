@@ -57,7 +57,18 @@
                 {
                     "name": "",
                     "id": "e7358de6-683c-44f8-bd67-4ee1c236a838",
-                    "path": "<Keyboard>/w",
+                    "path": "<Keyboard>/rightCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardARROWS",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "51fc89fb-c66e-4bae-b1e2-3d042fcef9b7",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardWASD",
@@ -67,8 +78,8 @@
                 },
                 {
                     "name": "",
-                    "id": "51fc89fb-c66e-4bae-b1e2-3d042fcef9b7",
-                    "path": "<Keyboard>/space",
+                    "id": "a4ec81d6-0d4c-4e03-ae85-c4b252fa7d9a",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardARROWS",
