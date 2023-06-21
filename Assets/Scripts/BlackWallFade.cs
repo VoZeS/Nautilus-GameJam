@@ -33,7 +33,7 @@ public class BlackWallFade : MonoBehaviour
         float alpha = mat.color.a;
         while (alpha < 1.0f)
         {
-            alpha += Time.deltaTime * fadeSpeed;
+            alpha += Time.unscaledDeltaTime * fadeSpeed;
             mat.color = new Color(color.r, color.g, color.b, alpha);
             yield return null;
         }

@@ -33,7 +33,7 @@ public class FadeManager : MonoBehaviour
         if (fadePhase == 0) return;
         else if (fadePhase == 1)
         {
-            disolveAmount += disolveSpeed * Time.deltaTime;
+            disolveAmount += disolveSpeed * Time.unscaledDeltaTime;
             if (disolveAmount >= 1.0f)
             {
                 disolveAmount = 1.0f;
