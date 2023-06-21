@@ -7791,6 +7791,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6517831103774487542, guid: c6b51d428a00d89488f5dcce0166c9dc, type: 3}
+      propertyPath: controllerType1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517831103774487542, guid: c6b51d428a00d89488f5dcce0166c9dc, type: 3}
+      propertyPath: controllerType2
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6517831103774487543, guid: c6b51d428a00d89488f5dcce0166c9dc, type: 3}
       propertyPath: m_Name
       value: SettingsManager

@@ -48,34 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         cutsceneOn = false;
 
-        // controller
-        if (player1)
-        {
-            int playerIndex = GetComponent<PlayerInput>().playerIndex;
-            int controllerType1 = SettingsManager.instance.controllerType1;
-            if (controllerType1 == 0) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardWASD", Keyboard.current);
-            else if (controllerType1 == 1) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardARROWS", Keyboard.current);
-            else if (Gamepad.all.Count > 0) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("Controller", Gamepad.all[0]);
-            else PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardWASD", Keyboard.current);
-        }
-        else
-        {
-            int playerIndex = GetComponent<PlayerInput>().playerIndex;
-            int controllerType2 = SettingsManager.instance.controllerType2;
-            if (controllerType2 == 0) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardWASD", Keyboard.current);
-            else if (controllerType2 == 1) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardARROWS", Keyboard.current);
-            else
-            {
-                int controllerType1 = SettingsManager.instance.controllerType1;
-                if (controllerType1 == 2)
-                {
-                    if (Gamepad.all.Count > 1) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("Controller", Gamepad.all[1]);
-                    else if (Gamepad.all.Count > 0) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardWASD", Keyboard.current);
-                    else PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardARROWS", Keyboard.current);
-                }
-                else if (Gamepad.all.Count > 0) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("Controller", Gamepad.all[0]);
-            }
-        }
+        RecalculateController();
 
         rb = GetComponent<Rigidbody>();
 
@@ -213,6 +186,25 @@ public class PlayerController : MonoBehaviour
     {
         movement_audiosource.clip = landing;
         movement_audiosource.Play();
+    }
+
+    public void RecalculateController()
+    {
+        // controller
+        if (player1)
+        {
+            int playerIndex = GetComponent<PlayerInput>().playerIndex;
+            int controllerType1 = SettingsManager.instance.controllerType1;
+            if (controllerType1 == 0) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardWASD", Keyboard.current);
+            else PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardARROWS", Keyboard.current);
+        }
+        else
+        {
+            int playerIndex = GetComponent<PlayerInput>().playerIndex;
+            int controllerType2 = SettingsManager.instance.controllerType2;
+            if (controllerType2 == 0 && SettingsManager.instance.controllerType1 == 1) PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardWASD", Keyboard.current);
+            else PlayerInput.all[playerIndex].SwitchCurrentControlScheme("KeyboardARROWS", Keyboard.current);
+        }
     }
 
     void OnDrawGizmos()

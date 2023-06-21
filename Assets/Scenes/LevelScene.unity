@@ -9452,11 +9452,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6843130103917848836, guid: 3ac5c8d865adca44c826c32972863740, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.789998
+      value: 2.6220002
       objectReference: {fileID: 0}
     - target: {fileID: 6843130103917848836, guid: 3ac5c8d865adca44c826c32972863740, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8700012
+      value: 1.8000007
       objectReference: {fileID: 0}
     - target: {fileID: 6843130103917848836, guid: 3ac5c8d865adca44c826c32972863740, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10749,11 +10749,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4890223013258196112, guid: 9106596e0d6dbbb4ab6a3ba437ffd359, type: 3}
       propertyPath: m_Radius
-      value: 2.4254172
+      value: 4.895191
       objectReference: {fileID: 0}
     - target: {fileID: 4890223013258196112, guid: 9106596e0d6dbbb4ab6a3ba437ffd359, type: 3}
       propertyPath: m_Center.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890223013258196112, guid: 9106596e0d6dbbb4ab6a3ba437ffd359, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890223013258196112, guid: 9106596e0d6dbbb4ab6a3ba437ffd359, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7280902320709788536, guid: 9106596e0d6dbbb4ab6a3ba437ffd359, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10974,11 +10982,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5554976085328493760, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.29
+      value: 3.122
       objectReference: {fileID: 0}
     - target: {fileID: 5554976085328493760, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.84
+      value: 1.77
       objectReference: {fileID: 0}
     - target: {fileID: 5554976085328493760, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12593,6 +12601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86785e7a3f18dc64b9fd30b42a0eb93c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boy: {fileID: 1572755291018136866}
+  girl: {fileID: 1943483823}
   imageFullscreen: {fileID: 4241756024745567388}
   imageVsync: {fileID: 4241756024861282996}
   textControllerType1: {fileID: 4241756024422186171}

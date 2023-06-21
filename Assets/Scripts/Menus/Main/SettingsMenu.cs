@@ -186,12 +186,12 @@ public class SettingsMenu : MonoBehaviour
         if (player1)
         {
             controllerType1--;
-            if (controllerType1 < 0) controllerType1 = 2;
+            if (controllerType1 < 0) controllerType1 = 1;
         }
         else
         {
             controllerType2--;
-            if (controllerType2 < 0) controllerType2 = 2;
+            if (controllerType2 < 0) controllerType2 = 1;
         }
         CalculateController(player1);
     }
@@ -201,12 +201,12 @@ public class SettingsMenu : MonoBehaviour
         if (player1)
         {
             controllerType1++;
-            if (controllerType1 > 2) controllerType1 = 0;
+            if (controllerType1 > 1) controllerType1 = 0;
         }
         else
         {
             controllerType2++;
-            if (controllerType2 > 2) controllerType2 = 0;
+            if (controllerType2 > 1) controllerType2 = 0;
         }
         CalculateController(player1);
     }

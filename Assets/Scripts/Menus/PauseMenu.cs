@@ -8,6 +8,9 @@ using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
+    [SerializeField] PlayerController boy;
+    [SerializeField] PlayerController girl;
+
     // variables
     bool fullscreen;
     bool vsync;
@@ -183,12 +186,12 @@ public class PauseMenu : MonoBehaviour
         if (player1)
         {
             controllerType1--;
-            if (controllerType1 < 0) controllerType1 = 2;
+            if (controllerType1 < 0) controllerType1 = 1;
         }
         else
         {
             controllerType2--;
-            if (controllerType2 < 0) controllerType2 = 2;
+            if (controllerType2 < 0) controllerType2 = 1;
         }
         CalculateController(player1);
     }
@@ -198,12 +201,12 @@ public class PauseMenu : MonoBehaviour
         if (player1)
         {
             controllerType1++;
-            if (controllerType1 > 2) controllerType1 = 0;
+            if (controllerType1 > 1) controllerType1 = 0;
         }
         else
         {
             controllerType2++;
-            if (controllerType2 > 2) controllerType2 = 0;
+            if (controllerType2 > 1) controllerType2 = 0;
         }
         CalculateController(player1);
     }
@@ -221,10 +224,8 @@ public class PauseMenu : MonoBehaviour
                 case 1:
                     textControllerType1.text = "Keyboard ARROWS";
                     break;
-                case 2:
-                    textControllerType1.text = "Controller";
-                    break;
             }
+            boy.RecalculateController();
         }
         else
         {
@@ -237,10 +238,8 @@ public class PauseMenu : MonoBehaviour
                 case 1:
                     textControllerType2.text = "Keyboard ARROWS";
                     break;
-                case 2:
-                    textControllerType2.text = "Controller";
-                    break;
             }
+            girl.RecalculateController();
         }
     }
 
@@ -275,7 +274,7 @@ public class PauseMenu : MonoBehaviour
         float alpha = 0.0f;
         while (alpha < 1.0f)
         {
-            alpha += errorFadeSpeed * Time.deltaTime;
+            alpha += errorFadeSpeed * Time.unscaledDeltaTime;
             errorPanel.color = new Color(errorPanelColor.r, errorPanelColor.g, errorPanelColor.b, alpha);
             errorText.color = new Color(errorTextColor.r, errorTextColor.g, errorTextColor.b, alpha);
             yield return null;
@@ -283,10 +282,10 @@ public class PauseMenu : MonoBehaviour
         alpha = 1.0f;
         errorPanel.color = new Color(errorPanelColor.r, errorPanelColor.g, errorPanelColor.b, alpha);
         errorText.color = new Color(errorTextColor.r, errorTextColor.g, errorTextColor.b, alpha);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSecondsRealtime(1.0f);
         while (alpha > 0.0f)
         {
-            alpha -= errorFadeSpeed * Time.deltaTime;
+            alpha -= errorFadeSpeed * Time.unscaledDeltaTime;
             errorPanel.color = new Color(errorPanelColor.r, errorPanelColor.g, errorPanelColor.b, alpha);
             errorText.color = new Color(errorTextColor.r, errorTextColor.g, errorTextColor.b, alpha);
             yield return null;
