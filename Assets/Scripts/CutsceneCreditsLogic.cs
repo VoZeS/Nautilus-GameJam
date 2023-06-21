@@ -7,6 +7,7 @@ public class CutsceneCreditsLogic : MonoBehaviour
 {
     [Header("Credits")]
     public TextMeshProUGUI title;
+    public Image titleLogo;
     public TextMeshProUGUI madeBy;
     public TextMeshProUGUI names;
     public TextMeshProUGUI thanks;
@@ -68,6 +69,7 @@ public class CutsceneCreditsLogic : MonoBehaviour
         }
 
         title.color = new Color(title.color.r, title.color.g, title.color.b, alphaOn);
+        titleLogo.color = new Color(titleLogo.color.r, titleLogo.color.g, titleLogo.color.b, alphaOn);
         madeBy.color = new Color(madeBy.color.r, madeBy.color.g, madeBy.color.b, alphaOn);
         names.color = new Color(names.color.r, names.color.g, names.color.b, alphaOn);
         thanks.color = new Color(thanks.color.r, thanks.color.g, thanks.color.b, alphaOn);
