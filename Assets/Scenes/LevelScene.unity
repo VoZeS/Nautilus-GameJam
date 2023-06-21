@@ -2219,6 +2219,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371204866}
   m_CullTransparentMesh: 1
+--- !u!198 &374633948 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2732254864078288817, guid: a94db41cb05ccef48a55ac02a81c144b, type: 3}
+  m_PrefabInstance: {fileID: 1951221918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &399160430
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,6 +2483,11 @@ RectTransform:
   m_AnchoredPosition: {x: -106, y: -248}
   m_SizeDelta: {x: 144.01001, y: 47.700012}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!198 &469151730 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2732254864391027939, guid: a94db41cb05ccef48a55ac02a81c144b, type: 3}
+  m_PrefabInstance: {fileID: 1951221918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &474238727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2543,6 +2553,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e871e09fe581cca4cb8cd5314821aa6d, type: 3}
+--- !u!198 &491951369 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2732254865529585449, guid: a94db41cb05ccef48a55ac02a81c144b, type: 3}
+  m_PrefabInstance: {fileID: 1951221918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &504225158
 GameObject:
   m_ObjectHideFlags: 0
@@ -9391,11 +9406,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6843130103917848836, guid: 3ac5c8d865adca44c826c32972863740, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.793
+      value: -36.28
       objectReference: {fileID: 0}
     - target: {fileID: 6843130103917848836, guid: 3ac5c8d865adca44c826c32972863740, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.535
+      value: -15.471
       objectReference: {fileID: 0}
     - target: {fileID: 6843130103917848836, guid: 3ac5c8d865adca44c826c32972863740, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9911,6 +9926,22 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.57087475
       objectReference: {fileID: 0}
+    - target: {fileID: 5603318610957477953, guid: a94db41cb05ccef48a55ac02a81c144b, type: 3}
+      propertyPath: chispas1
+      value: 
+      objectReference: {fileID: 1956431887}
+    - target: {fileID: 5603318610957477953, guid: a94db41cb05ccef48a55ac02a81c144b, type: 3}
+      propertyPath: chispas2
+      value: 
+      objectReference: {fileID: 491951369}
+    - target: {fileID: 5603318610957477953, guid: a94db41cb05ccef48a55ac02a81c144b, type: 3}
+      propertyPath: chispas3
+      value: 
+      objectReference: {fileID: 469151730}
+    - target: {fileID: 5603318610957477953, guid: a94db41cb05ccef48a55ac02a81c144b, type: 3}
+      propertyPath: chispas4
+      value: 
+      objectReference: {fileID: 374633948}
     - target: {fileID: 7427982338212271229, guid: a94db41cb05ccef48a55ac02a81c144b, type: 3}
       propertyPath: velocity
       value: 0.1
@@ -9932,6 +9963,11 @@ PrefabInstance:
 --- !u!95 &1951221921 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 775639222833605061, guid: a94db41cb05ccef48a55ac02a81c144b, type: 3}
+  m_PrefabInstance: {fileID: 1951221918}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1956431887 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2732254863790808587, guid: a94db41cb05ccef48a55ac02a81c144b, type: 3}
   m_PrefabInstance: {fileID: 1951221918}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1971400925 stripped
@@ -11241,11 +11277,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5554976085328493760, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.293
+      value: -35.78
       objectReference: {fileID: 0}
     - target: {fileID: 5554976085328493760, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5049994
+      value: -15.501
       objectReference: {fileID: 0}
     - target: {fileID: 5554976085328493760, guid: cd15258bd5a61b14dbd35e27fbdffb78, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13884,7 +13920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &4241756023837681519
 CanvasRenderer:
   m_ObjectHideFlags: 0
