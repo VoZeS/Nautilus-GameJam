@@ -18,6 +18,8 @@ public class InitialScreenManager : MonoBehaviour
     public GameObject mainMenuFirstButton;
     public GameObject settingsMenuFirstButton;
 
+    GameObject lastSelect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,8 @@ public class InitialScreenManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (EventSystem.current.currentSelectedGameObject == null) EventSystem.current.SetSelectedGameObject(lastSelect);
+        else lastSelect = EventSystem.current.currentSelectedGameObject;
     }
 
     public void OpenMenu(ACTIVE_MENU menuToOpen)

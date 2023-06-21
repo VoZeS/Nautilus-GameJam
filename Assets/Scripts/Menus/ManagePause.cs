@@ -12,6 +12,8 @@ public class ManagePause : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject firstButton;
 
+    GameObject lastSelect;
+
     void Awake()
     {
         instance = this;
@@ -27,6 +29,9 @@ public class ManagePause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (EventSystem.current.currentSelectedGameObject == null) EventSystem.current.SetSelectedGameObject(lastSelect);
+        else lastSelect = EventSystem.current.currentSelectedGameObject;
+
         if (Input.GetButtonDown("Pause") && !pauseMenu.activeInHierarchy)
         {
             pauseMenu.SetActive(true);
