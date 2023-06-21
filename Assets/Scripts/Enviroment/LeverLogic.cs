@@ -6,11 +6,13 @@ public class LeverLogic : MonoBehaviour
 {
     public bool isLeverActivated = false;
 
+    AudioSource audioSource;
     public Animator animatorLever;
     // Start is called before the first frame update
     void Start()
     {
         isLeverActivated = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class LeverLogic : MonoBehaviour
         {
             isLeverActivated = true;
             animatorLever.SetBool("isActivated", true);
+            audioSource.Play();
 
         }
     }
