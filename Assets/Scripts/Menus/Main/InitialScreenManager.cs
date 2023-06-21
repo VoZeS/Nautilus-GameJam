@@ -22,7 +22,7 @@ public class InitialScreenManager : MonoBehaviour
     void Start()
     {
         mainMenu.SetActive(true);
-        settingsMenu.SetActive(false);
+        //settingsMenu.SetActive(false);
         creditsMenu.SetActive(false);
     }
 

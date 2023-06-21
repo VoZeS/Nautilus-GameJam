@@ -7855,7 +7855,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fx
+  m_text: Music
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 311ac80b46b96d54d96e13032cd6f1db, type: 2}
   m_sharedMaterial: {fileID: 1275994302906849055, guid: 311ac80b46b96d54d96e13032cd6f1db, type: 2}
@@ -8057,7 +8057,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.8
+  m_FillAmount: 0.6
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -8172,7 +8172,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.42857143
+  m_FillAmount: 0.6
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -8662,7 +8662,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Music
+  m_text: Fx
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 311ac80b46b96d54d96e13032cd6f1db, type: 2}
   m_sharedMaterial: {fileID: 1275994302906849055, guid: 311ac80b46b96d54d96e13032cd6f1db, type: 2}
@@ -10019,7 +10019,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fx
+  m_text: Music
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 311ac80b46b96d54d96e13032cd6f1db, type: 2}
   m_sharedMaterial: {fileID: 1275994302906849055, guid: 311ac80b46b96d54d96e13032cd6f1db, type: 2}
@@ -12698,10 +12698,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 896989386}
   m_HandleRect: {fileID: 2110067136}
   m_Direction: 0
-  m_MinValue: -8
-  m_MaxValue: 2
+  m_MinValue: -5
+  m_MaxValue: 0
   m_WholeNumbers: 1
-  m_Value: 0
+  m_Value: -2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -13024,7 +13024,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Music
+  m_text: Fx
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 311ac80b46b96d54d96e13032cd6f1db, type: 2}
   m_sharedMaterial: {fileID: 1275994302906849055, guid: 311ac80b46b96d54d96e13032cd6f1db, type: 2}
@@ -14954,7 +14954,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.8
+  m_FillAmount: 0.6
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -17150,10 +17150,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 917998999}
   m_HandleRect: {fileID: 1631705937}
   m_Direction: 0
-  m_MinValue: -8
-  m_MaxValue: -1
+  m_MinValue: -5
+  m_MaxValue: 0
   m_WholeNumbers: 1
-  m_Value: -5
+  m_Value: -2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -18976,10 +18976,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1651803745}
   m_HandleRect: {fileID: 848669195}
   m_Direction: 0
-  m_MinValue: -8
-  m_MaxValue: 2
+  m_MinValue: -5
+  m_MaxValue: 0
   m_WholeNumbers: 1
-  m_Value: 0
+  m_Value: -2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

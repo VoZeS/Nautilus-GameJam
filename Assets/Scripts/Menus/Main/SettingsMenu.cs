@@ -70,11 +70,13 @@ public class SettingsMenu : MonoBehaviour
         fxVolume = PlayerPrefs.GetInt("FxVolume", -100); ;
         if (fxVolume == -100) audioMixer.GetFloat("FxVolume", out fxVolume);
         fxSlider.value = fxVolume / 10.0f;
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(masterVolume);
         if (Input.GetButtonDown("Cancel"))
         {
             if (controllerType1 == controllerType2 && controllerType1 != 2)
