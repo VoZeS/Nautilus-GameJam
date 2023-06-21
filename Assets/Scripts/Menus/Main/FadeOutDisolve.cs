@@ -24,7 +24,7 @@ public class FadeOutDisolve : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        disolveAmount -= disolveSpeed * Time.deltaTime;
+        disolveAmount -= disolveSpeed * Time.unscaledDeltaTime;
         if (disolveAmount < 0.0f) disolveAmount = 0.0f;
         mat.SetFloat("_DisolveAmount", disolveAmount);
     }

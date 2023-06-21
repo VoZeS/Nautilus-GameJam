@@ -28,7 +28,7 @@ public class FadeIntroLogic : MonoBehaviour
         if (Input.anyKey)
             timer = 23.0f;
 
-        timer += Time.deltaTime;
+        timer += Time.unscaledDeltaTime;
 
         if (timer <= 3.0f && alpha2 >= 0.0f)
             alpha2 -= 0.004f;

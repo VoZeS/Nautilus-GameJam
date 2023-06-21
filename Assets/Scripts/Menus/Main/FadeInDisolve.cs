@@ -26,7 +26,7 @@ public class FadeInDisolve : MonoBehaviour
             SceneManager.LoadScene(goToScene);
         }
 
-        disolveAmount += disolveSpeed * Time.deltaTime;
+        disolveAmount += disolveSpeed * Time.unscaledDeltaTime;
         if (disolveAmount > 1.0f) disolveAmount = 1.0f;
         mat.SetFloat("_DisolveAmount", disolveAmount);
     }
