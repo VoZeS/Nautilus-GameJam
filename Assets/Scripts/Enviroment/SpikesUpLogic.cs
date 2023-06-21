@@ -26,6 +26,7 @@ public class SpikesUpLogic : MonoBehaviour
     {
         
         end = false;
+
     }
 
     // Update is called once per frame
@@ -36,6 +37,7 @@ public class SpikesUpLogic : MonoBehaviour
             audioSource.Play();
             Vector3 direction = finalPosition.transform.position - initialPosition.transform.position;
             gameObject.transform.position += direction * velocity / 100;
+
         }
 
     }
@@ -53,6 +55,10 @@ public class SpikesUpLogic : MonoBehaviour
         leverLogic.isLeverActivated = false;
         leverLogic.animatorLever.SetBool("isActivated", false);
         elevatorLogic.going = true;
+        startLogic.chispas1.Stop();
+        startLogic.chispas2.Stop();
+        startLogic.chispas3.Stop();
+        startLogic.chispas4.Stop();
 
         realElevator.transform.position = elevatorRealInitialPosition.position;
         elevatorRB.transform.position = elevatorRBInitialPosition.position;
