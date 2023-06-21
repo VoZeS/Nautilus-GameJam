@@ -9819,6 +9819,10 @@ PrefabInstance:
       value: 0.57087475
       objectReference: {fileID: 0}
     - target: {fileID: 7427982338212271229, guid: a94db41cb05ccef48a55ac02a81c144b, type: 3}
+      propertyPath: velocity
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427982338212271229, guid: a94db41cb05ccef48a55ac02a81c144b, type: 3}
       propertyPath: elevatorRB
       value: 
       objectReference: {fileID: 1639877605}
@@ -12719,8 +12723,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yearsText: {fileID: 4241756023655377344}
   years: 0
-  microphone: {fileID: 4241756024040737737}
-  guitar: {fileID: 4241756024384960141}
+  microphoneON: {fileID: 0}
+  microphoneOFF: {fileID: 0}
+  guitarON: {fileID: 0}
+  guitarOFF: {fileID: 0}
   levelInd: 0
   desiredNumb: 3000
   initialNumb: 3000
