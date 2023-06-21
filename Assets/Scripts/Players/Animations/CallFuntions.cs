@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CallFuntions : MonoBehaviour
 {
+    [SerializeField] PlayerController playerController;
     [SerializeField] ProjectileEchoAttack pEchoAttack;
     [SerializeField] DetectorEchoAttack dEchoAttack;
 
@@ -23,5 +24,10 @@ public class CallFuntions : MonoBehaviour
     {
         if (pEchoAttack) pEchoAttack.SpawnProjectile();
         if (dEchoAttack) dEchoAttack.CastAttack();
+    }
+
+    public void CallPlayerLandingAudio()
+    {
+        if (playerController) playerController.PlayLandingSound();
     }
 }

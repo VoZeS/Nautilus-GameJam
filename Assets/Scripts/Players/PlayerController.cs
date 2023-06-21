@@ -126,9 +126,6 @@ public class PlayerController : MonoBehaviour
                     jumping = true;
                     animator.SetTrigger("Jump");
                     Invoke("JumpDone", 0.1f);
-                    movement_audiosource.clip = landing;
-                    movement_audiosource.Play();
-
                 }
             }
             else
@@ -210,6 +207,12 @@ public class PlayerController : MonoBehaviour
     void JumpDone()
     {
         jumping = false;
+    }
+
+    public void PlayLandingSound()
+    {
+        movement_audiosource.clip = landing;
+        movement_audiosource.Play();
     }
 
     void OnDrawGizmos()
