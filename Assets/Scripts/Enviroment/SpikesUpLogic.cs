@@ -65,5 +65,6 @@ public class SpikesUpLogic : MonoBehaviour
         elevatorColl.transform.position = elevatorInitialPosition.position;
 
         gameObject.transform.position = initialPosition.position;
+
     }
 }

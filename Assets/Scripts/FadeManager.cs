@@ -8,6 +8,9 @@ public class FadeManager : MonoBehaviour
 
     [SerializeField] int fadePhase; // 0 --> no fade, 1 --> fade in, 2 --> fade out
 
+    public GameObject cameraSensor;
+
+
     [SerializeField] Material mat;
     [SerializeField] float disolveSpeed;
     float disolveAmount;
@@ -63,10 +66,14 @@ public class FadeManager : MonoBehaviour
     public void FadeIn()
     {
         fadePhase = 1;
+        cameraSensor.SetActive(false);
+
     }
 
     public void FadeOut()
     {
         fadePhase = 2;
+        cameraSensor.SetActive(true);
+
     }
 }
